@@ -48,7 +48,7 @@ This step will enable the application of the algorithm needed for uni/multi-vari
 ## Step-4:  Create class and the functions
 
 - Create a class for the model object
-<br>Below is example snippet showing the model class
+<br>Below is an example snippet showing the model class
 <br>Prophet- Univariate<br>
 ![prophet_class](./images/prophet_class.png)<br>
 <br>RandomForest-Multivariate<br>
