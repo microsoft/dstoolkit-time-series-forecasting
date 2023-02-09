@@ -1,0 +1,12 @@
+{
+    "dataset": {
+        "db_name": "database",
+        "table_name": "table"
+    },
+    "dataset_schema": {
+        "required_columns": ["time", "target", "grain", "feature"],
+        "grain_colnames": ["grain"],
+        "target_colname": "target",
+        "time_colname": "time"
+    }
+}

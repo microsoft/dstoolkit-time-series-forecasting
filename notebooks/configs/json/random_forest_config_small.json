@@ -1,0 +1,70 @@
+{
+    "metadata": {
+        "time_series": "orange_juice"
+    },
+    "dataset": {
+        "db_name": "sample_data",
+        "table_name": "orange_juice_small"
+    },
+    "dataset_schema": {
+        "required_columns": ["date",
+                             "quantity",
+                             "store",
+                             "brand",
+                             "on_promotion"],
+        "grain_colnames": ["store", "brand"],
+        "time_colname": "date",
+        "target_colname": "quantity",
+        "forecast_colname": "forecasts",
+        "ts_freq": "W-WED"
+    },
+    "data_splitting": {
+        "train_validation_timeframe": {},
+        "holdout_timeframe": {
+            "start": "1992-04-01",
+            "end": "1992-10-07"
+        },
+        "cross_validation": {
+            "num_splits": 8,
+            "rolling_origin_step_size": 2
+        }
+    },
+    "feature_engineering": {
+        "feature_horizon": 4,
+        "operations": {
+            "one_hot_encoding": {
+                "categorical_colnames": ["store", "brand"]
+            },
+            "basic_time_based": {
+                "feature_names": ["week_of_year", "month_of_year", "week_of_month"]
+            },
+            "lags": {
+                "colnames_to_lag": ["quantity"],
+                "lag_time_steps": [1, 2, 3, 4]
+            },
+            "holidays": {
+                "holidays_json_path": "/dbfs/FileStore/tables/holidays_1990_to_1993.json"
+            }
+        },
+        "additional_feature_colnames": ["on_promotion"]
+    },
+    "model_params": {
+        "algorithm": "RandomForestRegressorModel",
+        "hyperparameters": {
+            "numTrees": 100,
+            "impurity": "variance",
+            "maxDepth": 10,
+            "featureSubsetStrategy": "auto"
+        },
+        "model_name_prefix": "rf_model_regtest_small"
+    },
+    "evaluation": [
+        {"metric": "WMapeEvaluator"},
+        {"metric": "WMapeEvaluator", "express_as_accuracy": 1}
+    ],
+    "forecast_horizon": 4,
+    "results": {
+        "db_name": "results",
+        "table_name": "rf_orange_juice_small"
+    }
+}
