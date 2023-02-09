@@ -55,12 +55,11 @@ This step will enable the application of the algorithm needed for uni/multi-vari
 ![randomforest_class](./images/randomforest_class.png)
 - Create function to fit and predict<br>
   - If the model is univariate, create the function `_fit_and_predict_single_ts_wrapper`<br>
- ![univariate_fit_pred_wrapper](./images/univariate_fit_predict_wrapper.png)<br>
- This function captures the class instance attributes used in the inner function.<br>
- Within this function, create the UDF(user defined function) with the specific implementation of the new model fit and predict methods for a single time series for the univariate model.<br>
-<br>
+    ![univariate_fit_pred_wrapper](./images/univariate_fit_predict_wrapper.png)<br>
+    This function captures the class instance attributes used in the inner function.<br>
+    Within this function, create the UDF(user defined function) with the specific implementation of the new model fit and predict methods for a single time series for the univariate model.<br>
   - If the function is multivariate, write the implementation of the individual fit and predict functions of the new model aligned to the multivariatewrapper class.<br>
- ![univariate_fit_pred_wrapper](./images/multivariate_fit_predict.PNG)<br>
+    ![univariate_fit_pred_wrapper](./images/multivariate_fit_predict.PNG)<br>
 - The output result of Univariate model should return a pandas dataframe while multivariate should return a SparkDataFrame.
 - Ensure the output dataframe contains all the columns along with the forecast column.
 
