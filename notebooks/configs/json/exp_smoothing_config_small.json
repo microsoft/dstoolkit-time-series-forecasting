@@ -1,0 +1,46 @@
+{
+    "metadata": {
+        "time_series": "orange_juice"
+    },
+    "dataset": {
+        "db_name": "sample_data",
+        "table_name": "orange_juice_small"
+    },
+    "dataset_schema": {
+        "required_columns": ["date",
+                             "quantity",
+                             "store",
+                             "brand",
+                             "on_promotion"],
+        "grain_colnames": ["store", "brand"],
+        "time_colname": "date",
+        "target_colname": "quantity",
+        "forecast_colname": "forecasts",
+        "ts_freq": "W-WED"
+    },
+    "data_splitting": {
+        "train_validation_timeframe": {},
+        "holdout_timeframe": {
+            "start": "1992-04-01",
+            "end": "1992-10-07"
+        },
+        "cross_validation": {
+            "num_splits": 8,
+            "rolling_origin_step_size": 2
+        }
+    },
+    "feature_engineering": {},
+    "model_params": {
+        "algorithm": "SimpleExpSmoothingModel",
+        "hyperparameters": {
+            "optimized": true,
+            "use_brute": true
+        },
+        "model_name_prefix": "exp_smoothing_model_regtest_small"
+    },
+    "forecast_horizon": 4,
+    "results": {
+        "db_name": "results",
+        "table_name": "exp_smoothing_orange_juice_small"
+    }
+}
