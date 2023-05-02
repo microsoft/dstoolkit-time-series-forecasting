@@ -7,7 +7,7 @@
 # MAGIC - Leverage the `single_train_test_eval` method to run a "single fold" of model training-testing-evaluation.
 # MAGIC - Leverage the `walk_forward_model_training` method to run a full walk-forward cross validation experiment, either with auto-generated data splits or manually provided data splits.
 # MAGIC - How to use `walk_forward_model_training` to forecast into the future.
-# MAGIC 
+# MAGIC
 # MAGIC Note: To see an end-to-end workflow where the MLExperiment class is used to run a walk-forward cross validation ML experiment and log its results to MLFlow, refer to the **run_ml_experiment_mlflow** notebook.
 
 # COMMAND ----------
@@ -43,6 +43,7 @@ config_path = f"../configs/json/{config_filename}"
 # methods to validate the contents of the config.
 cnf_manager = ConfigManager(path_to_config=config_path)
 config = cnf_manager.get()
+config['dataset']['db_name'] = 'default'
 pprint(config)
 
 # COMMAND ----------
@@ -95,47 +96,56 @@ print(result.train_timeframe, result.test_timeframe)
 
 # COMMAND ----------
 
-result_df = result.result_df.toPandas()
-result_df
+result_df = result.result_df
+display(result_df)
+
+# COMMAND ----------
+# Importing the ErrorAnalysis class
+myErrorAnalysis = ErrorAnalysis(config=config)
 
 # COMMAND ----------
 
-myErrorAnalysis = ErrorAnalysis(target_column_name = 'quantity',
-                    time_identifier = 'date',
-                    keys_identifier=['store', 'brand'],
-                    predicted_column_name = 'forecasts')
+myErrorAnalysis.plot_hist(df=result_df,keys=['store', 'brand'], bins=20, precentile=0.95, cut=False)
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_hist(df=result_df,keys=['store', 'brand'], metric="mape", bins=20, precentile=0.95, cut=False)
+# MAGIC %md
+# MAGIC ### histogram of the error for each store and brand comninbation
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_hist(df=result_df,keys=['store'], metric="mape", bins=20, precentile=0.95, cut=False)
+myErrorAnalysis.plot_hist(df=result_df,keys=['store'], bins=20, precentile=0.95, cut=False)
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_hist(df=result_df,keys=['brand'], metric="mape", bins=20, precentile=0.95, cut=False)
+myErrorAnalysis.plot_hist(df=result_df,keys=['brand'], bins=20, precentile=0.95, cut=False)
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_time(df=result_df, metric="mape")
+# MAGIC %md
+# MAGIC ### Plotting the error as a function of the time
 
+# COMMAND ----------
+
+myErrorAnalysis.plot_time(df=result_df)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Plotting the best and the wrost predictions examples
 
 # COMMAND ----------
 
 myErrorAnalysis.plot_examples(df=result_df,
                                 top=True,
-                                num_of_pairs=5,
-                                metric = "mape"
+                                num_of_pairs=5
                                 )
 
 # COMMAND ----------
 
 myErrorAnalysis.plot_examples(df=result_df,
                                 top=False,
-                                num_of_pairs=5,
-                                metric = "mape"
+                                num_of_pairs=5
                                 )
 
 # COMMAND ----------
@@ -148,7 +158,7 @@ myErrorAnalysis.plot_examples(df=result_df,
 
 # MAGIC %md
 # MAGIC **1. When the user does not specify custom `time_splits` argument in the `walk_forward_model_training` method**
-# MAGIC 
+# MAGIC
 # MAGIC As part of the experiment, TSFF by default will do splitting of the dataframe `df` that is loaded from the mount (or custom prepared by the user) based on `data_splitting` specifications in the configuraion file.
 
 # COMMAND ----------
@@ -168,66 +178,80 @@ display(walk_forward_results.run_results[0].result_df)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC 
+# MAGIC
 # MAGIC #### Building the dataframe for the error analysis throw multi walk forwards
+# MAGIC caching the results in pandas dataframe and then converting back to spark dataframe
+# MAGIC this is done to avoid the long run time of the error analysis
+# MAGIC in this section the keys, prediction column, target column and the time column are fixed
 
 # COMMAND ----------
 
-all_results = pd.DataFrame()
+all_results_ = pd.DataFrame()
 for i, result in enumerate(walk_forward_results.run_results):
     print(f'Walk number {len(walk_forward_results.run_results) - i}')
     df_result = result.result_df.toPandas()
     df_result['walk'] = len(walk_forward_results.run_results) - i
-    all_results = pd.concat([all_results, df_result])
+    all_results_ = pd.concat([all_results_, df_result])
 
-result_df = all_results.groupby(['store', 'brand','date'], as_index=False).mean()
+
+all_results = spark.createDataFrame(all_results_)
+result_df_ = all_results.groupby(['store', 'brand','date']).mean()
+result_df_ = result_df_.withColumnRenamed("avg(forecasts)","forecasts")
+result_df_ = result_df_.withColumnRenamed("avg(quantity)", "quantity")
+result_df = spark.createDataFrame(result_df_.toPandas())
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC 
+# MAGIC
 # MAGIC #### Activating error anaylsis functions
 
 # COMMAND ----------
 
-myErrorAnalysis = ErrorAnalysis(target_column_name = 'quantity',
-                    time_identifier = 'date',
-                    keys_identifier=['store', 'brand'],
-                    predicted_column_name = 'forecasts')
+myErrorAnalysis = ErrorAnalysis(config=config)
 
 # COMMAND ----------
 
-myErrorAnalysis.cohort_plot(all_results=all_results, walk_name = 'walk', metric='mape', vmin = 10, vmax = 15)
+# MAGIC %md
+# MAGIC ### plottting the error as a cohort plot
+# MAGIC The cohort plot is a plot of the error as a function of the time and the walk number
+# MAGIC the vmin and vmax are for the colorbar
+
+# COMMAND ----------
+
+myErrorAnalysis.cohort_plot(all_results=all_results, walk_name = 'walk', vmin = 0.1, vmax = 1.5)
 
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_hist(df=result_df,keys=['store', 'brand'], metric="mape", bins=20, precentile=0.95, cut=False)
+myErrorAnalysis.plot_hist(df=result_df,keys=['store', 'brand'], bins=20, precentile=0.95, cut=False)
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_hist(df=result_df,keys=['store'], metric="mape", bins=20, precentile=0.95, cut=False)
+myErrorAnalysis.plot_hist(df=result_df,keys=['store'], bins=20, precentile=0.95, cut=False)
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_hist(df=result_df,keys=['brand'], metric="mape", bins=20, precentile=0.95, cut=False)
+myErrorAnalysis.plot_hist(df=result_df,keys=['brand'], bins=20, precentile=0.95, cut=False)
 
 # COMMAND ----------
 
-myErrorAnalysis.plot_time(df=result_df, metric="mape")
+myErrorAnalysis.plot_time(df=result_df)
 
 # COMMAND ----------
 
 myErrorAnalysis.plot_examples(df=result_df,
                                 top=True,
-                                num_of_pairs=5,
-                                metric = "mape"
+                                num_of_pairs=5
                                 )
 
 # COMMAND ----------
 
 myErrorAnalysis.plot_examples(df=result_df,
                                 top=False,
-                                num_of_pairs=5,
-                                metric = "mape"
+                                num_of_pairs=5
                                 )
+
+# COMMAND ----------
+
+
