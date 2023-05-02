@@ -23,10 +23,10 @@ class ErrorAnalysis:
         """
 
         self.config = config
-        self.target_column_name = config['dataset_schema']['target_colname']
-        self.time_identifier = config['dataset_schema']['time_colname']
-        self.keys_identifier = config['dataset_schema']['grain_colnames']
-        self.predicted_column_name = config['dataset_schema']['forecast_colname']
+        self.target_colname = config['dataset_schema']['target_colname']
+        self.time_colname = config['dataset_schema']['time_colname']
+        self.grain_colnames = config['dataset_schema']['grain_colnames']
+        self.forecast_colname = config['dataset_schema']['forecast_colname']
 
     def cohort_plot(
         self,
@@ -50,15 +50,15 @@ class ErrorAnalysis:
         # get the data
         wmape = WMapeEvaluator()
         df_groupby = wmape.compute_metric_per_grain(df=all_results,
-                                         target_colname=self.target_column_name,
-                                         forecast_colname=self.predicted_column_name,
-                                         grain_colnames=[walk_name, self.time_identifier])
-        df_cohort = df_groupby.toPandas().sort_values(by=[walk_name, self.time_identifier])
+                                         target_colname=self.target_colname,
+                                         forecast_colname=self.forecast_colname,
+                                         grain_colnames=[walk_name, self.time_colname])
+        df_cohort = df_groupby.toPandas().sort_values(by=[walk_name, self.time_colname])
         pivot_cohort = pd.pivot_table(
             df_cohort,
             values=['wmape'],
             index=[walk_name],
-            columns=[self.time_identifier],
+            columns=[self.time_colname],
             aggfunc=np.mean,
         )
         # Initialize the figure
@@ -75,7 +75,7 @@ class ErrorAnalysis:
             fmt="g",
         )
         plt.ylabel("walk_name")
-        plt.xlabel(f"prediction {self.time_identifier}")
+        plt.xlabel(f"prediction {self.time_colname}")
         plt.yticks(rotation="360")
         plt.show()
 
@@ -89,15 +89,15 @@ class ErrorAnalysis:
         # get the data
         wmape = WMapeEvaluator()
         df_time = wmape.compute_metric_per_grain(df=df,
-                                         target_colname=self.target_column_name,
-                                         forecast_colname=self.predicted_column_name,
-                                         grain_colnames=[self.time_identifier])
-        df_rank = df_time.toPandas().sort_values(by=[self.time_identifier])
+                                         target_colname=self.target_colname,
+                                         forecast_colname=self.forecast_colname,
+                                         grain_colnames=[self.time_colname])
+        df_rank = df_time.toPandas().sort_values(by=[self.time_colname])
         fig, ax = plt.subplots(figsize=(15, 5))
-        plt.xlabel(self.time_identifier)
+        plt.xlabel(self.time_colname)
         plt.ylabel('wmape')
         plt.title(f"wmape per iteration on dates")
-        plt.plot(df_rank[self.time_identifier], df_rank['wmape'])
+        plt.plot(df_rank[self.time_colname], df_rank['wmape'])
         ax.xaxis.set_tick_params(rotation=30, labelsize=10)
         plt.show()
 
@@ -122,8 +122,8 @@ class ErrorAnalysis:
 
         wmape = WMapeEvaluator()
         df_groupby = wmape.compute_metric_per_grain(df=df,
-                                         target_colname=self.target_column_name,
-                                         forecast_colname=self.predicted_column_name,
+                                         target_colname=self.target_colname,
+                                         forecast_colname=self.forecast_colname,
                                          grain_colnames=keys)
         df_rank = df_groupby.toPandas()
         df_rank = df_rank[df_rank['wmape'] < df_rank['wmape'].quantile(precentile)]
@@ -154,43 +154,43 @@ class ErrorAnalysis:
 
         wmape = WMapeEvaluator()
         df_groupby = wmape.compute_metric_per_grain(df=df,
-                                         target_colname=self.target_column_name,
-                                         forecast_colname=self.predicted_column_name,
-                                         grain_colnames=self.keys_identifier)
+                                         target_colname=self.target_colname,
+                                         forecast_colname=self.forecast_colname,
+                                         grain_colnames=self.grain_colnames)
         df_rank = df_groupby.toPandas()
 
         ls_wic_store_top = (
             df_rank.sort_values('wmape', ascending=top)
-            .head(num_of_pairs)[self.keys_identifier + ['wmape']]
+            .head(num_of_pairs)[self.grain_colnames + ['wmape']]
             .to_dict("records")
         )
-        df = df.toPandas().sort_values(by=self.keys_identifier + [self.time_identifier])
+        df = df.toPandas().sort_values(by=self.grain_colnames + [self.time_colname])
 
         df["key_combine"] = ""
-        for key in self.keys_identifier:
+        for key in self.grain_colnames:
             df["key_combine"] = df["key_combine"] + '_' + df[key]
         for i, rec in enumerate(ls_wic_store_top):
             plot1 = plt.figure(i + 1)
             filter_str = ""
-            for key in self.keys_identifier:
+            for key in self.grain_colnames:
                 filter_str += '_' + rec[key]
-            df_loop = df[df["key_combine"] == filter_str].sort_values(by=[self.time_identifier])
-            plt.xlabel(self.time_identifier)
-            plt.ylabel(self.target_column_name)
+            df_loop = df[df["key_combine"] == filter_str].sort_values(by=[self.time_colname])
+            plt.xlabel(self.time_colname)
+            plt.ylabel(self.target_colname)
             metric_value = round(rec['wmape'], 2)
-            plt.title(f"{' '.join(self.keys_identifier)} : {filter_str[1:]}, {'wmape'} : {metric_value}")
+            plt.title(f"{' '.join(self.grain_colnames)} : {filter_str[1:]}, {'wmape'} : {metric_value}")
             plt.plot(
-                df_loop[self.time_identifier],
-                df_loop[self.target_column_name],
+                df_loop[self.time_colname],
+                df_loop[self.target_colname],
                 color="r",
-                label=self.target_column_name,
+                label=self.target_colname,
             )
             plt.xticks(rotation=45)
             plt.plot(
-                df_loop[self.time_identifier],
-                df_loop[self.predicted_column_name],
+                df_loop[self.time_colname],
+                df_loop[self.forecast_colname],
                 color="g",
-                label=self.predicted_column_name,
+                label=self.forecast_colname,
             )
             plt.legend()
         plt.show()
