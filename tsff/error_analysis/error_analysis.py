@@ -36,9 +36,16 @@ class ErrorAnalysis:
         vmax: int = 150,
     ) -> None:
         """
-        df.columns = [self.time_identifier] + self.keys_identifier + [self.target_column_name, self.predicted_column_name, lookahead, walk_name]
-        :param metric: string value from list of metrics [rmse, mape, mse] to get performing by.
         This function is ploting the metric score for cohort analysis
+        The cohort plot is a plot of the error as a function of the time and the walk number
+        the vmin and vmax are for the colorbar
+
+        Args:
+            all_results (SparkDataFrame): Spark dataframe with the results of the walk forward
+            walk_name (str, optional): The name of the walk column. Defaults to "walk".
+            vmin (int, optional): The minimum value for the colorbar. Defaults to 30.
+            vmax (int, optional): The maximum value for the colorbar. Defaults to 150.
+
         """
         # get the data
         wmape = WMapeEvaluator()
@@ -74,9 +81,10 @@ class ErrorAnalysis:
 
     def plot_time(self, df: SparkDataFrame) -> None:
         """
-        df.columns = [self.time_identifier] + self.keys_identifier + [self.target_column_name, self.predicted_column_name]
-        :param metric: string value from list of metrics [rmse, mape, mse] to get performing by.
         This function is ploting the metric score for each iteration per date
+
+        Args:
+            df (SparkDataFrame): Spark dataframe with the results of the walk forward
         """
         # get the data
         wmape = WMapeEvaluator()
@@ -102,13 +110,16 @@ class ErrorAnalysis:
         cut=False,
     ) -> None:
         """
-        df.columns = [self.time_identifier] + self.keys_identifier + [self.target_column_name, self.predicted_column_name]
-        :param metric: string value from list of metrics [rmse, mape, mse] to get performing by.
-        :param bins: number of bins in the histograma.
-        :param precentile: cut the edge of the data 0.95 => 95%.
-        :param cut: Using pd.cut() to get a better understanding of the data.
-        This function is ploting the distrubtion of the mape per product, location over time
+        This function is ploting the distrubtion of the wmape per keys over time
+
+        Args:
+            df (SparkDataFrame): Spark dataframe with the results of the walk forward
+            keys (list): list of the keys to group by
+            bins (int, optional): number of bins in the histograma. Defaults to 20.
+            precentile (float, optional): cut the edge of the data 0.95 => 95%. Defaults to 0.95.
+            cut (bool, optional): Using pd.cut() to get a better understanding of the data. Defaults to False.
         """
+
         wmape = WMapeEvaluator()
         df_groupby = wmape.compute_metric_per_grain(df=df,
                                          target_colname=self.target_column_name,
@@ -133,11 +144,12 @@ class ErrorAnalysis:
         num_of_pairs=10
     ) -> None:
         """
-        df.columns = [self.time_identifier] + self.keys_identifier + [self.target_column_name, self.predicted_column_name]
-        :param df: Data Frame with the above columns
-        :param top: Bool to get the top performing or False for the worst
-        :param num_of_pairs: Int to get the amount of plots pairs self.keys_identifier (ex: sku, store)
-        :param metric: string value from list of metrics [rmse, mape, mse] to get performing by.
+        This function is ploting the best or worst examples
+
+        Args:
+            df (SparkDataFrame): Spark dataframe with the results of the walk forward
+            top (bool, optional): True for the best examples and False for the worst. Defaults to True.
+            num_of_pairs (int, optional): number of examples to show. Defaults to 10.
         """
 
         wmape = WMapeEvaluator()
