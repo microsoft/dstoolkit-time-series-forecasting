@@ -70,105 +70,6 @@ exp = MLExperiment(spark_session=spark,
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ### Single iteration of training, testing and evaluation
-# MAGIC Users can leverage the `single_train_test_eval()` method to run a train-test-evaluation on a single time split. This can be viewed as a single "iteration" of walk-forward CV.
-
-# COMMAND ----------
-
-train_timeframe = {"start": "1990-06-20", "end": "1992-06-30"}
-test_timeframe = {"start": "1992-07-01", "end": "1992-07-31"}
-
-result = exp.single_train_test_eval(
-    df,
-    train_timeframe=train_timeframe,
-    test_timeframe=test_timeframe,
-    run_name="single_train_test_run",
-    verbose=True
-)
-
-# COMMAND ----------
-
-print(result.run_name)
-display(result.metrics)
-print(result.train_timeframe, result.test_timeframe)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ### Starting Error Analysis process for one iteration
-# MAGIC getting the results into pandas
-
-# COMMAND ----------
-
-result_df = result.result_df
-display(result_df)
-
-# COMMAND ----------
-# Importing the ErrorAnalysis class
-myErrorAnalysis = ErrorAnalysis(config=config)
-
-# COMMAND ----------
-# MAGIC %md
-
-# MAGIC ### Using the plot hist function to show diffrent distrubtions.
-# MAGIC The plot hist function plots the error distrubtion of the key columns
-# MAGIC Why do we need to plot for diffrent keys combinations?
-# MAGIC When we look only on the store level or the brand level we understand better how to model preforme.
-# MAGIC But we miss some cruicel information, for example, if we have a store that is doing well in the model and we have a brand that is doing well in the model, but when we combine them together we get a bad model.
-# MAGIC Some stores and brands would need diffrent approches, and with the plot hist function we can see it.
-
-# COMMAND ----------
-
-myErrorAnalysis.plot_hist(df=result_df,keys=['store', 'brand'], bins=20, precentile=0.95, cut=False)
-# We have a distribution of the error for store, brand combination
-
-# COMMAND ----------
-
-myErrorAnalysis.plot_hist(df=result_df,keys=['store'], bins=20, precentile=0.95, cut=False)
-# We have a distribution of the error for store
-# COMMAND ----------
-
-myErrorAnalysis.plot_hist(df=result_df,keys=['brand'], bins=20, precentile=0.95, cut=False)
-# We have a distribution of the error for brand 
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ### Using the plot time function to show the error as a function of the time
-# MAGIC Overall the model could perform well, but in some time periods it could perform badly.
-# MAGIC Covid, holidays, seasonal events could affect the model performance.
-# MAGIC With this function we can get clarity on the time periods that the model perform well or badly.
-
-# COMMAND ----------
-
-myErrorAnalysis.plot_time(df=result_df)
-# 
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ### Using the plot examples function to show examples of the error for each key combination
-# MAGIC The plot examples function is calculating the best and the wrost preforming examples for each key combination.
-# MAGIC And it plots the results over time
-# MAGIC This function is very useful to understand the model boundaries of best and wrost performing examples.
-# MAGIC The function brings more clarity to why and when the model performance well or badly.
-
-# COMMAND ----------
-
-myErrorAnalysis.plot_examples(df=result_df,
-                                top=True,
-                                num_of_pairs=5
-                                )
-
-# COMMAND ----------
-
-myErrorAnalysis.plot_examples(df=result_df,
-                                top=False,
-                                num_of_pairs=5
-                                )
-
-# COMMAND ----------
-
-# MAGIC %md
 # MAGIC ### Performing Walk-Forward Cross-Validation
 # MAGIC For full CV runs, users can use the built-in `walk_forward_model_training()` method. This method calls the `single_train_test_eval()` method demonstrated above in a multithreaded manner; data splits are constructed or defined depending on your config.
 
@@ -242,26 +143,49 @@ myErrorAnalysis = ErrorAnalysis(config=config)
 myErrorAnalysis.cohort_plot(all_results=all_results, walk_name = 'walk', vmin = 0.1, vmax = 1.5)
 
 # COMMAND ----------
-
 # MAGIC %md
-# MAGIC ### All the plot functions in one place on the new walk forward results.
-# MAGIC Please take a look on the plots and see how they are different from the single iteration plots.
+
+# MAGIC ### Using the plot hist function to show diffrent distrubtions.
+# MAGIC The plot hist function plots the error distrubtion of the key columns
+# MAGIC Why do we need to plot for diffrent keys combinations?
+# MAGIC When we look only on the store level or the brand level we understand better how to model preforme.
+# MAGIC But we miss some cruicel information, for example, if we have a store that is doing well in the model and we have a brand that is doing well in the model, but when we combine them together we get a bad model.
+# MAGIC Some stores and brands would need diffrent approches, and with the plot hist function we can see it.
 
 # COMMAND ----------
 
 myErrorAnalysis.plot_hist(df=result_df,keys=['store', 'brand'], bins=20, precentile=0.95, cut=False)
+# We have a distribution of the error for store, brand combination
 
 # COMMAND ----------
 
 myErrorAnalysis.plot_hist(df=result_df,keys=['store'], bins=20, precentile=0.95, cut=False)
-
+# We have a distribution of the error for store
 # COMMAND ----------
 
 myErrorAnalysis.plot_hist(df=result_df,keys=['brand'], bins=20, precentile=0.95, cut=False)
+# We have a distribution of the error for brand 
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Using the plot time function to show the error as a function of the time
+# MAGIC Overall the model could perform well, but in some time periods it could perform badly.
+# MAGIC Covid, holidays, seasonal events could affect the model performance.
+# MAGIC With this function we can get clarity on the time periods that the model perform well or badly.
 
 # COMMAND ----------
 
 myErrorAnalysis.plot_time(df=result_df)
+# 
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Using the plot examples function to show examples of the error for each key combination
+# MAGIC The plot examples function is calculating the best and the wrost preforming examples for each key combination.
+# MAGIC And it plots the results over time
+# MAGIC This function is very useful to understand the model boundaries of best and wrost performing examples.
+# MAGIC The function brings more clarity to why and when the model performance well or badly.
 
 # COMMAND ----------
 
@@ -277,6 +201,5 @@ myErrorAnalysis.plot_examples(df=result_df,
                                 num_of_pairs=5
                                 )
 
+
 # COMMAND ----------
-
-
