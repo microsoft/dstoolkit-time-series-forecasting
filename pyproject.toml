@@ -2,7 +2,8 @@
 name = "dstoolkit-tsff"
 version = "0.1.0"
 description = "A framework to do time series forecasting along that includes data processing, profiling, modeling, forecasting and error analysis"
-authors = ["Microsoft DSToolkit forecasting team"]
+authors = ["Microsoft DS Toolkit Forecasting Team"]
+license = "MIT"
 readme = "README.md"
 packages = [
     {include = "tsff"}
