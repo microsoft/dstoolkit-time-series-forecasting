@@ -27,6 +27,7 @@ class ErrorAnalysis:
         self.time_colname = config['dataset_schema']['time_colname']
         self.grain_colnames = config['dataset_schema']['grain_colnames']
         self.forecast_colname = config['dataset_schema']['forecast_colname']
+        self.evaluator = WMapeEvaluator()
 
     def cohort_plot(
         self,
@@ -36,19 +37,19 @@ class ErrorAnalysis:
         vmax: int = 150,
     ) -> None:
         """
-        This function is ploting the metric score for cohort analysis
+        This function is plotting the metric score for cohort analysis
         The cohort plot is a plot of the error as a function of the time and the walk number
         the vmin and vmax are for the colorbar
 
         Args:
             all_results (SparkDataFrame): Spark dataframe with the results of the walk forward
-            walk_name (str, optional): The name of the walk column. Defaults to "walk".
-            vmin (int, optional): The minimum value for the colorbar. Defaults to 30.
-            vmax (int, optional): The maximum value for the colorbar. Defaults to 150.
+            walk_name (str): The name of the walk column. Defaults to "walk".
+            vmin (int): The minimum value for the colorbar. Defaults to 30.
+            vmax (int): The maximum value for the colorbar. Defaults to 150.
 
         """
         # get the data
-        wmape = WMapeEvaluator()
+        wmape = self.evaluator
         df_groupby = wmape.compute_metric_per_grain(df=all_results,
                                          target_colname=self.target_colname,
                                          forecast_colname=self.forecast_colname,
@@ -81,13 +82,13 @@ class ErrorAnalysis:
 
     def plot_time(self, df: SparkDataFrame) -> None:
         """
-        This function is ploting the metric score for each iteration per date
+        This function is plotting the metric score for each iteration per date
 
         Args:
             df (SparkDataFrame): Spark dataframe with the results of the walk forward
         """
         # get the data
-        wmape = WMapeEvaluator()
+        wmape = self.evaluator
         df_time = wmape.compute_metric_per_grain(df=df,
                                          target_colname=self.target_colname,
                                          forecast_colname=self.forecast_colname,
@@ -110,7 +111,7 @@ class ErrorAnalysis:
         cut=False,
     ) -> None:
         """
-        This function is ploting the distrubtion of the wmape per keys over time
+        This function is plotting the distribution of the wmape per keys over time
 
         Args:
             df (SparkDataFrame): Spark dataframe with the results of the walk forward
@@ -120,7 +121,7 @@ class ErrorAnalysis:
             cut (bool, optional): Using pd.cut() to get a better understanding of the data. Defaults to False.
         """
 
-        wmape = WMapeEvaluator()
+        wmape = self.evaluator
         df_groupby = wmape.compute_metric_per_grain(df=df,
                                          target_colname=self.target_colname,
                                          forecast_colname=self.forecast_colname,
@@ -144,15 +145,15 @@ class ErrorAnalysis:
         num_of_pairs=10
     ) -> None:
         """
-        This function is ploting the best or worst examples
+        This function is plotting the best or worst examples
 
         Args:
             df (SparkDataFrame): Spark dataframe with the results of the walk forward
-            top (bool, optional): True for the best examples and False for the worst. Defaults to True.
-            num_of_pairs (int, optional): number of examples to show. Defaults to 10.
+            top (bool): True for the best examples and False for the worst. Defaults to True.
+            num_of_pairs (int): number of examples to show. Defaults to 10.
         """
 
-        wmape = WMapeEvaluator()
+        wmape = self.evaluator
         df_groupby = wmape.compute_metric_per_grain(df=df,
                                          target_colname=self.target_colname,
                                          forecast_colname=self.forecast_colname,
