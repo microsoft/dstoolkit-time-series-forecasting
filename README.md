@@ -35,8 +35,9 @@
 1. Clone the repo locally.
 2. `cd` into the project
 3. `poetry install` - This will leverage the poetry configuration file `pyproject.toml` and create a python virtual environment for you.
-4. `poetry shell` then spins up the local virtual environment for you to develop and test code.
-5. `poetry build` creates a wheel package of the `tsff` code.
+4. `poetry add <package>` - This will let you add new python dependencies from the command line
+5. `poetry shell` then spins up the local virtual environment for you to develop and test code.
+6. `poetry build` creates a wheel package of the `tsff` code.
 
 ## Time Series forecasting model development lifecycle
 
