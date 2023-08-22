@@ -1,17 +1,16 @@
-# ADR 006: Suggestions for improving the extensibility of tsff
+# ADR 006: Suggestions for improving the extensibility of Time Series Forecasting Accelerator (TSFA)
 
 - status: {proposed}
 - date: {2022-09-22 when the decision was last updated}
-- deciders: EF core team
-- consulted: EF champions
+- deciders: TSFA core team
+- consulted: TSFA champions
 - informed: All DS on FP&A
 
 ## Context and Problem Statement
 
-The `tsff` package is the standardized and agreed upon framework for modeling and experimentation in the FP&A project.
-Data scientists are leveraging the framework for the specific problem they work on.
-However, in version 2.0, an implementation of a new functionality (e.g. model, evaluation, feature engineering)
-requires the code to be merged into the framework, and adaptations to the core functionality.
+Data scientists can leveraging TSFA for the specific time-series forecasting problem they work on.
+However, to assist in adding additional modeling functionality (e.g. model, evaluation, feature engineering)
+requires the code to be merged into TSFA, and adaptations to the core functionality.
 
 Here are two examples:
 
@@ -23,10 +22,10 @@ Here are two examples:
     While this could be achieved as an external post-process phase,
     it would be cleaner to have it as part of the modeling logic.
 
-2. Customizing the evaluation logic requires an api change in the framework
+2. Customizing the evaluation logic requires an api change in the code
 
-    While the framework has a `wmape` function, users have no control over the weights applied,
-    and have no way of controlling how to compute or apply weights without changing framework code.
+    While TSFA has a `wmape` function, users have no control over the weights applied,
+    and have no way of controlling how to compute or apply weights without changing the code.
 
 ### Extension capabilities available with other frameworks
 
@@ -79,7 +78,7 @@ class MyFeaturizer(Featurizer):
     # Specific featurization logic
 
 
-class MLExperiment: #class is called Model in tsff
+class MLExperiment: #class is called Model in tsfa
     def __init__(self, model_cls:Type[BaseModel], 
                        evaluator:BaseEvaluator, 
                        featurizer:Optional[Featurizer], ...):
@@ -112,13 +111,13 @@ Note that in this example, the featurizer is part of the MLExperiment logic. It 
 
 ### Positive Consequences
 
-- Users would be able to customize the framework to their needs without a requirement to go through framework code.
-- The same approaches could be extended to other parts of the framework,
+- Users would be able to customize TSFA to their needs without a requirement to go through all the code.
+- The same approaches could be extended to other parts of TSFA,
 such as the cross-validation strategy, which would allow even more customizability.
 
 ### Negative Consequences
 
-- This would require an API change to the framework, but by adapting the existing configuration logic, this change could be minimal.
+- This would require an API change to TSFA, but by adapting the existing configuration logic, this change could be minimal.
 - Evaluators must be stateless as classes are instantiated outside the execution flow.
 If for any reason there is leakage between folds, the user might not know about it.
-- As this change would allow anyone to create models independently, we might lose some of the alignment on common code and methods. A potential mitigation for this is continuous alignment through EF champions.
+- As this change would allow anyone to create models independently, we might lose some of the alignment on common code and methods. A potential mitigation for this is continuous alignment through TSFA champions.

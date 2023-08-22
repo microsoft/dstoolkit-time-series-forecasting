@@ -1,16 +1,16 @@
 ---
 status: proposed
 ---
-# Experimentation Framework Versioning Strategy
+# Time Series Forecasting Accelerator (TSFA) Versioning Strategy
 
 ## Context and Problem Statement
 
-The Experimentation Framework is a collection of classes, "interfaces", and utilities used both in experimentation and for productionalizing models as part of the MLOps pipeline. As such, it needs to support experimentation workstreams and productionalized models while still being actively worked on. We need a way to version and release the framework so that we can have stable production models, quick feature turnaround in experimentation environments while being stable enough to avoid impacting experimentation flow - all with a small team of people who may change regularly, and may have limited/delayed access to the ability to deploy. This necessitates both a strong versioning and a strong release packaging strategy - this ADR covers the versioning, which also encompasses version maintenance (i.e. how many versions we expect to support simultaneously), which I'm bundling together as they are highly related and unlikely to change independently. The actual release packaging, however, may change over time.
+TSFA is a collection of classes, "interfaces", and utilities used both in experimentation and for productionalizing models as part of the MLOps pipeline. As such, it needs to support experimentation workstreams and productionalized models while still being actively worked on. We need a way to version and release the code so that we can have stable production models, quick feature turnaround in experimentation environments while being stable enough to avoid impacting experimentation flow - all with a small team of people who may change regularly, and may have limited/delayed access to the ability to deploy. This necessitates both a strong versioning and a strong release packaging strategy - this ADR covers the versioning, which also encompasses version maintenance (i.e. how many versions we expect to support simultaneously), which I'm bundling together as they are highly related and unlikely to change independently. The actual release packaging, however, may change over time.
 
 ## Decision Drivers
 
-- Experimentation workstreams contribute to the framework, so want a quick turnaround on new features being deployed in their environments
-- A small crew will need to both build new features and maintain existing releases
+- Data Scientists contribute to TSFA, so want a quick turnaround on new features being deployed in their environments
+- A small contributor base will need to both build new features and maintain existing releases
 - Production should remain stable or it can negatively impact the bottom line
 - Different production environments can be required to update at the same cadence
   - There is no "production release freeze" that applies to one specific environment vs. another

@@ -2,7 +2,7 @@
 
 Hyperparameter tuning is an important part of many ML techniques. It shares many similarities with model selection overall; instead of selecting between different model types (GBM, Linear, etc.), we are choosing the optimal set of hyperparameters for a single model type. As such K-folds cross validation is also the standard method for hyperparameter tuning, in order to prevent the tuning/selection process from overfitting to one specific subset of the data.
 
-This doc outlines the proposed hyperparameter tuning implementation for the Model Experimentation and Evaluation framework. Note that this is not an in-depth discussion on the different ways to perform hyperparameter tuning.
+This doc outlines the proposed hyperparameter tuning implementation for Time Series Forecasting Accelerator (TSFA). Note that this is not an in-depth discussion on the different ways to perform hyperparameter tuning.
 
 ## Overview of Hyperparameter Tuning Methods
 
@@ -20,11 +20,11 @@ The following is a visualization of the difference between Grid Search and Rando
 
 It's worth mentioning that there are other "smart" hyperparameter tuning methods (such as Bayesian optimization) which are meant to more intelligently search through the hyperparameter possibilities. However, these are much less parallelizable, and it's difficult to say if they can outperform random search if random search can be parallelized.
 
-In practice, sklearn's GridSearchCV or RandomSearchCV methods are frequently used. However, these automatically perform CV and thus it is difficult to use custom-defined CV folds with default sklearn methods. Thus, we propose implementing our own `tune()` method for the models in our framework, which runs a basic grid search over a pre-defined set of hyperparameters provided in the config.
+In practice, sklearn's GridSearchCV or RandomSearchCV methods are frequently used. However, these automatically perform CV and thus it is difficult to use custom-defined CV folds with default sklearn methods. Thus, we propose implementing our own `tune()` method for the models in TSFA, which runs a basic grid search over a pre-defined set of hyperparameters provided in the config.
 
-## Implementation in Framework
+## Implementation in TSFA
 
-The following is an example of how hyperparameter tuning can be implemented in the Model Experimentation and Evaluation framework.
+The following is an example of how hyperparameter tuning can be implemented in TSFA.
 
 ### 1. Define hyperparameters and search space
 

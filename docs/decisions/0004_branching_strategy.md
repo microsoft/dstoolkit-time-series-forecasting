@@ -5,12 +5,12 @@ status: proposed
 
 ## Context and Problem Statement
 
-Time Series Forecasting Framework (TSFF) needs a coherent branching strategy that meets disparate goals, needing to move fast while avoiding breaking production and being consistent with others. We should have a consistent branching, merging, and tagging strategy to meet these needs.
+Time Series Forecasting Accelerator (TSFA) needs a coherent branching strategy that meets disparate goals, needing to move fast while avoiding breaking production and being consistent with others. We should have a consistent branching, merging, and tagging strategy to meet these needs.
 More concretely:
 
 ## Decision Drivers
 
-- Ability to move fast, on multiple teams, all contributing to the framework.
+- Ability to move fast, on multiple teams, all contributing to the codebase.
 - New and occasional contributors should be able to understand the branching/merging strategy easily, even if they don't come from software engineering backgrounds.
 - Maintenance will be by a small and fluid team, so:
   - The burden of keeping new work from impacting production should be low.
@@ -77,7 +77,7 @@ GitLab Flow is somewhere between GitFlow and GitHub Flow. All development is don
   - Releasing `main` to production can be as simple as merging `main` into the production branch.
   - However, if we want to protect production from errors, we can introduce a `pre-prod` branch and environment for release testing.
   - We can still enable CI/CD from `main` into non-prod environments (e.g. a `staging` environment or possibly our Experimentation environments).
-  - This technique is resilient if stakeholders makes later decisions to support multiple simultaneous versions of `tsff`, although with added complexity.
+  - This technique is resilient if stakeholders makes later decisions to support multiple simultaneous versions of `tsfa`, although with added complexity.
 - Bad because:
   - Maintaining two long-lived active branches can be a management burden
   - Cherry-picking hotfixes from `main` to other environments' branches is difficult and prone to error

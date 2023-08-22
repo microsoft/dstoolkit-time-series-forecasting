@@ -24,39 +24,39 @@ The configuration file [.markdownlint.yml](../../../.markdownlint.yml) is used t
 
 ## Setting up local Conda environment
 
-- Make sure to clone the [tsff](https://github.com/prvenk/tsff) repository locally. You may have to setup SSH keys on Azure Devops in order to be able to access the git repository locally.
+- Make sure to clone this repository locally. You may have to setup SSH keys on Azure Devops in order to be able to access the git repository locally.
 
     ![clone_repo](images/clone_repo.png)
 
-- In this example, we will name this new conda environment **tsff**. From the root level of the repository, lets start by creating a conda environment as follows:
+- In this example, we will name this new conda environment **tsfa**. From the root level of the repository, lets start by creating a conda environment as follows:
 
-    `conda create --name tsff python=3.8`
+    `conda create --name tsfa python=3.8`
 
 - Activate this environment by running:
 
-    `conda activate tsff`
+    `conda activate tsfa`
 
-    You should see that the `tsff` environment is activated:
+    You should see that the `tsfa` environment is activated:
 
-    ![tsff](images/tsff_env.png)
+    ![tsfa](images/tsfa_env.png)
 
 - Make sure that you have the correct environment activated by running:
 
     `conda env list`
 
-- To install the python libraries required for local framework development and testing, use the following `pip` commands to install what you need in the **tsff** environment. Note that package requirements and dependencies are defined in `tsff/setup.py`.
+- To install the python libraries required for local development and testing, use the following `pip` commands to install what you need in the **tsfa** environment. Note that package requirements and dependencies are defined in `tsfa/setup.py`.
 
-    `pip install -e tsff`
+    `pip install -e tsfa`
 
-    `pip install -e tsff[test]`
+    `pip install -e tsfa[test]`
 
 - For additional libraries useful for local development like jupyter, or any visualization libraries can be specified in the `interactive` field in `setup.py` and installed locally as:
 
-    `pip install -e tsff[interactive] # Optional`
+    `pip install -e tsfa[interactive] # Optional`
 
 Troubleshooting:
 
-- If you're on Windows and are unable to activate your conda environment (running `conda activate tsff` has no effect), try running the above steps in a CMD Prompt instead of Powershell.
+- If you're on Windows and are unable to activate your conda environment (running `conda activate tsfa` has no effect), try running the above steps in a CMD Prompt instead of Powershell.
 - When opening the project in the VSCode Explorer, please select the project's root directory. Flake8 uses the `setup.cfg` file for describing linting rules.
 
 ## Using Flake8 and Markdownlint

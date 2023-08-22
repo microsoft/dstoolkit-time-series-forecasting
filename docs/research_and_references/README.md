@@ -1,6 +1,6 @@
 # Research and References
 
-This folder contains documents for research discussions and recommendations that were made throughout the development of the Time Series Forecasting Framework. It also contains a [resources_and_references](resources_and_references.md) document which lists out many useful resources for time series forecasting.
+This folder contains documents for research discussions and recommendations that were made throughout the development of the Time Series Forecasting Accelerator. It also contains a [resources_and_references](resources_and_references.md) document which lists out many useful resources for time series forecasting.
 
 Discussions & References:
 

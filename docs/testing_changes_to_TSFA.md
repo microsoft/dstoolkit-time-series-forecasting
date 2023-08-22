@@ -1,25 +1,25 @@
-# Testing changes and additions to the Time Series Forecasting Framework
+# Testing changes and additions to the Time Series Forecasting Accelerator
 
-The Time Series Forecasting Framework (TSFF) is designed to have an extensible codebase. Users of the framework are expected to expand upon the existing capabilities over time by adding new models, feature engineering options, and various other functionalities. To ensure that all changes to the framework function as intended, and that changes do not introduce unwanted effects to existing functionalities, developers must ensure that changes are thoroughly tested prior to committing them to `main`. This document outlines the general procedure of how to test your changes during development and how to write/run unit tests to ensure that they continue to function as intended.
+TSFA is designed to have an extensible codebase. Users of the accelerator are expected to expand upon the existing capabilities over time by adding new models, feature engineering options, and various other functionalities. To ensure that all changes to the code function as intended, and that changes do not introduce unwanted effects to existing functionalities, developers must ensure that changes are thoroughly tested prior to committing them to `main`. This document outlines the general procedure of how to test your changes during development and how to write/run unit tests to ensure that they continue to function as intended.
 
 There are 2 "testing" topics that this document will cover:
 
 1. Testing that your new changes/additions runs as intended via the `module_samples` notebooks. These notebooks are also used to provide examples of how to leverage individual modules or functionality
 2. Adding unit tests for your changes, which will automatically run as part of the CI/CD pipeline.
 
-In addition, please refer to the [Frequency of Regression Testing](decisions/0007_frequency_of_regression_testing.md) ADR document for information related to the method and cadence of end-to-end testing for the TSFF library.
+In addition, please refer to the [Frequency of Regression Testing](decisions/0007_frequency_of_regression_testing.md) ADR document for information related to the method and cadence of end-to-end testing for the TSFA library.
 
 ## 1. Testing your changes via the module_sample notebooks
 
-Under `tsff/notebooks` you will find a `module_samples` directory:
+Under `tsfa/notebooks` you will find a `module_samples` directory:
 
 ![module_samples_location](images/module_samples_location.png)
 
- This directory contains notebooks used to test individual functionalities of the framework independently and illustrate how to use specific modules or functionality. For example, the notebook `models_prophet` is used to test that the `ProphetModel` class is performing its functions correctly (training a model and predicting on a subsequent dataset). Notebooks in this directory can be used by developers to ensure that their code runs without issues and produces the correct outputs. These notebooks can be leveraged be users to know how to use specific TSFF functionality.
+ This directory contains notebooks used to test individual functionalities of TSFA independently and illustrate how to use specific modules or functionality. For example, the notebook `models_prophet` is used to test that the `ProphetModel` class is performing its functions correctly (training a model and predicting on a subsequent dataset). Notebooks in this directory can be used by developers to ensure that their code runs without issues and produces the correct outputs. These notebooks can be leveraged be users to know how to use specific TSFA functionality.
 
 ### Important: Import structure for module_samples notebooks
 
-Since the notebooks in this directory are meant to test newly-made changes, we must be able to import these changes properly. Normally, importing modules from the TSFF library simply requires an import statement (e.g. `from tsff.models import ProphetModel`). However, this will import from the installed TSFF library on the cluster. Instead, we wish to import from the local codebase where we have the changes to test. To do this, we need to insert the path to the `tsff` root directory to the beginning of the system PATH variables:
+Since the notebooks in this directory are meant to test newly-made changes, we must be able to import these changes properly. Normally, importing modules from the TSFA library simply requires an import statement (e.g. `from tsfa.models import ProphetModel`). However, this will import from the installed TSFA library on the cluster. Instead, we wish to import from the local codebase where we have the changes to test. To do this, we need to insert the path to the `tsfa` root directory to the beginning of the system PATH variables:
 
 ![module_samples_imports](images/module_samples_imports.png)
 
@@ -39,11 +39,11 @@ Each unit test is a self-contained procedure used to validate that the function,
 - Each test should be fully isolated (runs independently of other tests).
 - Failure messages should be clear; it should be easy to determine the expected result and to pinpoint the problem.
 
-Unit tests for the TSFF library are under the `tsff/tests` directory:
+Unit tests for the TSFA library are under the `tsfa/tests` directory:
 
 ![unit_tests_location](images/unit_tests_location.png)
 
-The TSFF library uses [pytest](https://docs.pytest.org/en/7.1.x/) to do unit testing. Here are some additional resources to guide developers and contributors with developing good unit tests:
+The TSFA library uses [pytest](https://docs.pytest.org/en/7.1.x/) to do unit testing. Here are some additional resources to guide developers and contributors with developing good unit tests:
 
 - [CSE Playbook: Testing Data Science and MLOps Code](https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/)
 - [Testing Best Practices for Machine Learning Libraries](https://towardsdatascience.com/testing-best-practices-for-machine-learning-libraries-41b7d0362c95)
@@ -51,7 +51,7 @@ The TSFF library uses [pytest](https://docs.pytest.org/en/7.1.x/) to do unit tes
 
 Finally, some practical considerations for developing your unit tests:
 
-- Prioritize testing critical components. In TSFF, this means model and feature engineering orchestrators as well as evaluators.
+- Prioritize testing critical components. In TSFA, this means model and feature engineering orchestrators as well as evaluators.
 - If a piece of code is getting too complex to write a self-contained test for, think about refactoring it into smaller, more modular components.
 - You don't need to unit test everything, but strive for solid test coverage.
 - Remember that tests also need to be updated and maintained as the code base evolves.
@@ -74,13 +74,13 @@ Finally, some practical considerations for developing your unit tests:
 
 To run unit tests, you can simply run the following command from the project root directory:
 
-    `python -m pytest tsff/tests/`
+    `python -m pytest tsfa/tests/`
 
-This will run all tests that are in the `tsff/tests/` directory.
+This will run all tests that are in the `tsfa/tests/` directory.
 
 You can also run a specific unit test file by running the `pytest` command with a filename parameter. For example:
 
-    `python -m pytest libs/tsff/tests/evaluation/test_metrics.py`
+    `python -m pytest libs/tsfa/tests/evaluation/test_metrics.py`
 
 ### Running unit tests interactively in VSCode (Optional)
 

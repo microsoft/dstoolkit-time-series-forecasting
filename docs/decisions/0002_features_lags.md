@@ -7,7 +7,7 @@ date: 2022-08-05
 
 ## Context and Problem Statement
 
-Time series data is often featurized using "lags" to allow future predictions to be based on previous periods (e.g. tomorrow will be similar to today). The Experimentation Framework should contain a Lags Featurizer that produces these features in a consistent fashion so that all experimentation streams can use it to get lag features in a consistent and performant manner. How should it be implemented, and how does it deal with gaps in the series?
+Time series data is often featurized using "lags" to allow future predictions to be based on previous periods (e.g. tomorrow will be similar to today). Time Series Forecasting Accelerator (TSFA) should contain a Lags Featurizer that produces these features in a consistent fashion so that all experimentation streams can use it to get lag features in a consistent and performant manner. How should it be implemented, and how does it deal with gaps in the series?
 
 **Note: This is a retrospective ADR, documenting existing code in an effort to understand it and present alternative options in the event it needs to be reconsidered.**
 

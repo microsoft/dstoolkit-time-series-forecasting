@@ -1,8 +1,8 @@
-# Time Series Forecasting Framework coding standards
+# Time Series Forecasting Accelerator (TSFA) coding standards
 
-To improve readability and understanding, below are the coding standards expected for code contributions to the framework:
+To improve readability and understanding, below are the coding standards expected for code contributions to TSFA:
 
-1. The framework codebase will adhere to [PEP-8: Style Guide for Python Code](https://peps.python.org/pep-0008/). This is to ensure code readability. PEP-8 coding practices include coding standards such as:
+1. The TSFA codebase will adhere to [PEP-8: Style Guide for Python Code](https://peps.python.org/pep-0008/). This is to ensure code readability. PEP-8 coding practices include coding standards such as:
     - Incorporating docstrings and typedefs for all classes, class methods, and functions.
     - Ensuring that lines are a maximum of 120 characters long.
     - Adhering to 4-space indentations.

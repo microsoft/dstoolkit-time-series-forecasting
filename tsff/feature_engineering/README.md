@@ -11,7 +11,7 @@ Currently implemented feature transformations are:
 - One Hot Encoding
 - Time based
 
-This module also enables the users to use features that were computed externally to `tsff`. This is done using the "additional features" functionality.
+This module also enables the users to use features that were computed externally to `tsfa`. This is done using the "additional features" functionality.
 
 ## features.py
 

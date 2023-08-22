@@ -1,19 +1,19 @@
 ---
 status: proposed
 ---
-# Time Series Forecasting Framework frequency of regression testing
+# Time Series Forecasting Accelerator frequency of regression testing
 
 ## Context and Problem Statement
 
-The Time Series Forecasting Framework (TSFF) is a collection of classes, "interfaces", and utilities used to train as well as evaluate models. TSFF will support and enable multiple workstreams as they leverage its packaged utilities for featurization, modeling and operationalization. Use of the package and newer business use-cases will drive improvements and enhancements, new features, models and utilities back to TSFF. Due to this we need a way to periodically conduct end-to-end testing (regression testing) to ensure we have a stable codebase that can be used by Experimentation Workstreams as bugs are fixed, new functionality is introduced, and existing functionality is enhanced. At the same time, we need to ensure end-to-end testing does not impact the experimentation flow and potentially limit/delay plans for production deployments.
+The Time Series Forecasting Accelerator (TSFA) is a collection of classes, "interfaces", and utilities used to train as well as evaluate models. TSFA will support and enable multiple workstreams as they leverage its packaged utilities for featurization, modeling and operationalization. Use of the package and newer business use-cases will drive improvements and enhancements, new features, models and utilities back to TSFA. Due to this we need a way to periodically conduct end-to-end testing (regression testing) to ensure we have a stable codebase that can be used by Experimentation Workstreams as bugs are fixed, new functionality is introduced, and existing functionality is enhanced. At the same time, we need to ensure end-to-end testing does not impact the experimentation flow and potentially limit/delay plans for production deployments.
 
 ## Decision Drivers
 
-- Since the experimentation workstreams will be contributing to the framework codebase, we want the ability to regularly test changes such as bug fixes, new functionalities, and enhancements to existing functionalities in order to ensure the codebase works as expected.
+- Since user Data Scientists can contribute to the codebase, we want the ability to regularly test changes such as bug fixes, new functionalities, and enhancements to existing functionalities in order to ensure the codebase works as expected.
 - Conduct end-to-end test periodically enough to ensure bugs are identified sooner.
 - Identify and resolve any bugs before MLOps integration for a planned production release.
-- Conduct end-to-end testing on different sized datasets (such as small, medium, and large test datasets) to ensure execution times are tracked as the framework codebase evolves.
-- Update or define a new set of test datasets as new functionality is introduced to the framework.
+- Conduct end-to-end testing on different sized datasets (such as small, medium, and large test datasets) to ensure execution times are tracked as the codebase evolves.
+- Update or define a new set of test datasets as new functionality is introduced to the codebase.
 - Ability to track end-to-end execution time to train a model as the codebase evolves.
 - Automation of the end-to-end tests would enable periodic job scheduling.
 - Need to schedule end-to-end testing at a time that would not impact Experimentation Workstreams cluster usage.
@@ -40,10 +40,10 @@ The Time Series Forecasting Framework (TSFF) is a collection of classes, "interf
 For all options considered:
 
 - The regression tests should be executed by EF Champions or Experimentation Workstreams that are accountable for the changes being committed. However, the results of the regression tests such as execution times for each test dataset should be communicated to all EF Champions for awareness.
-- Once changes are merged (using existing PR process with peer code reviews, linting checks and unit testing), the `tsff` codebase version should be tagged in AzDO.
+- Once changes are merged (using existing PR process with peer code reviews, linting checks and unit testing), the `tsfa` codebase version should be tagged in AzDO.
 - If the changes to the codebase after the last regression test requires an update to the test datasets, this needs to be completed prior to the next regression test. Updates could include a data refresh, and/or new schemas for the datasets to ensure new featurizers can be computed appropriately.
 - Regression test results such as execution time will be logged to MLFlow experiment as a metric.
-- The framework codebase version (`tsff-vx.x.x`) should be logged to MLFlow for tracking.
+- The framework codebase version (`tsfa-vx.x.x`) should be logged to MLFlow for tracking.
 
 ### End-to-end testing on every commit
 
@@ -76,7 +76,7 @@ For all options considered:
 
 ### Weekly end-to-end testing on codebase in main branch
 
-- Once a week, regression tests are conducted on the `tsff` codebase in `main` branch to ensure code executes as expected and metrics such as execution time are similar to previous weeks or tests.
+- Once a week, regression tests are conducted on the `tsfa` codebase in `main` branch to ensure code executes as expected and metrics such as execution time are similar to previous weeks or tests.
 - The motivation for this option is to provide a trade-off between early discovery of performance degradation or breaking changes without slowing down the day-to-day cadence of work or putting undue pressure on experimentation clusters.
 - Good, because:
   - Any impact on metrics like execution time is identified on a weekly basis. This will enable faster identification of changes that resulted in the performance change, i.e. finite number of changes within the week that resulted in the performance change.
@@ -87,11 +87,11 @@ For all options considered:
 
 ### End of Sprint end-to-end testing on codebase in main branch
 
-- At the end of a sprint, regression tests are conducted on the `tsff` codebase in `main` branch to ensure code executes as expected and metrics such as execution time are similar to previous regression tests.
+- At the end of a sprint, regression tests are conducted on the `tsfa` codebase in `main` branch to ensure code executes as expected and metrics such as execution time are similar to previous regression tests.
 - The reasoning behind this option is to provide discovery of performance degradation or breaking changes before attempting any end-of-sprint pre-release efforts, while avoiding slowing down the day-to-day cadence of work, putting undue pressure on experimentation clusters, or unduly impacting the work of the Experimentation Workstream team during the core of development time on the sprint.
 - Good, because:
   - During sprint planning, the work can be planned appropriately allocating bandwidth to EF Champion(s) to conduct regression tests.
-  - At the end of every sprint, EF Champions (and workstreams that they represent) will know the expected performance (such as execution time) of `tsff` codebase.
+  - At the end of every sprint, EF Champions (and workstreams that they represent) will know the expected performance (such as execution time) of `tsfa` codebase.
   - If there are any issues in performance due to changes, the changes can be identified quickly as there finite number of changes per sprint.
   - If there are any issues in performance and this needs to be addressed, the work can be planned for the next sprint.
 - Bad, because:
@@ -101,12 +101,12 @@ For all options considered:
 ### Every major change would require end-to-end test on small dataset, end of sprint end-to-end testing on codebase in main branch using test datasets
 
 - The same major enhancements illustrated in the "end-to-end testing on every major change" option apply. However, when these major enhancements are committed  to `main` branch, the codebase is tested end-to-end using a small dataset.
-- Additionally, similar to the "end of sprint end-to-end testing on codebase in main branch option, the `tsff` codebase in `main` branch is regression tested at the end of each sprint to ensure metrics such as execution time are similar to previous regression tests.
+- Additionally, similar to the "end of sprint end-to-end testing on codebase in main branch option, the `tsfa` codebase in `main` branch is regression tested at the end of each sprint to ensure metrics such as execution time are similar to previous regression tests.
 - The reasoning behind this option is to identify potential integration issues early, when the new major changes are committed. Same reasons as previously stated for testing end-to-end at the end of each sprint also apply to this option
 - Good, because:
   - Can allocate capacity for regression testing in each sprint, and correction of bugs discovered for the next sprint.
   - Integration problems are identified early on each major change commit.
-  - At the end of every sprint, EF Champions (and workstreams that they represent) will know the expected performance (such as execution time) of `tsff` codebase.
+  - At the end of every sprint, EF Champions (and workstreams that they represent) will know the expected performance (such as execution time) of `tsfa` codebase.
 - Bad, because:
   - Cluster availability may be limited and challenging to plan at the end of a sprint.
   - Adequate planning is required to ensure capacity to update (if required) test datasets prior to end of the sprint.
