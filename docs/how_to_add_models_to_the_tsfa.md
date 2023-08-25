@@ -20,9 +20,9 @@ Below is an example showing a step by step method for the addition of a new mode
 
 ## Step-1: Add the model package<br>
 
-This step will enable the application of the algorithm needed for uni/multi-variate model<br>
+This step will add the model package dependency to Peotry<br>
 
-- Add the package and the dependencies needed for the model in the requirements file `.azure_pipelines/requirements-pr.txt`
+- Add the package and the dependencies needed for the model in the configuration file `pyproject.toml`
 <br>The figure below illustrates the addition of `prophet package` <br><br>
 ![prophet](./images/prophet_package.png)
 <br>This will ensure that you have the package installed in the library<br>
