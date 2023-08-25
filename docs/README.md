@@ -15,4 +15,3 @@ Reference Documents:
 - **[Time Series forecasting model development lifecycle](ml_lifecycle.md)**: Describes the proposed model development lifecycle.
 - **[Setting up local environment](setup_local_environment.md)**: Includes instructions for setting up your local environment for development and contributions to TSFA.
 - **[Testing changes to the codebase](testing_changes_to_TSFA.md)**: Includes guidance and instructions for testing changes/additions to the codebase.
-- **[Troubleshooting](troubleshooting.md)**: A list of some common errors that users may encounter and how to resolve them.
