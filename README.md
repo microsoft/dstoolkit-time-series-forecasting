@@ -22,7 +22,26 @@
         - Sample notebooks illustrating the various TSFF usage scenarios, emphasizing flexibility and end-to-end model training with walk-forward cross validation. These notebooks can be found in the [notebooks/how_to_use_tsff](notebooks/how_to_use_tsff) folder.
 - [Documentation](docs) to support TSFF understanding and usage.
 
-## Prerequisites
+## Setup
+
+### Requirements
+
+- Python `3.10.x` - use [pyenv](https://github.com/pyenv/pyenv) for Python
+  version management.
+- [Poetry](https://python-poetry.org/)
+
+### Quick Start
+
+1. Clone the repo locally.
+2. `cd` into the project
+3. `poetry install` - This will leverage the poetry configuration file `pyproject.toml` and create a python virtual environment for you.
+4. `poetry add <package>` - This will let you add new python dependencies from the command line
+5. `poetry shell` then spins up the local virtual environment for you to develop and test code.
+6. `poetry build` creates a wheel package of the `tsff` code.
+
+## Time Series forecasting model development lifecycle
+
+Refer to the [Time Series forecasting model development lifecycle](docs/ml_lifecycle.md) documentation for an examination of the proposed model development lifecycle and the phases TSFF can be used. However, its important to consider the following prerequisites before diving into model development:
 
 1. The experimentation dataset should be created independent of this framework.
     - It is the responsibility of the Data Scientist and Engineer to ensure reconciliation and correctness of the data against source systems.
@@ -32,20 +51,12 @@
     - It is encouraged to dedicate time for data understanding prior to experimentation. Users should have performed basic EDA steps such as data validation and missing value imputations prior to using the framework.
     - It is also encouraged to create an experiment hypotheses backlog such that the experiments are planned, specifying features and ML algorithms to consider.
 
-## Time Series forecasting model development lifecycle
-
-Refer to the [Time Series forecasting model development lifecycle](docs/ml_lifecycle.md) documentation for a examination of the proposed model development lifecycle and the phases TSFF can be used.
 
 ## Coding standards
 
 Refer to [Time Series Forecasting Framework coding standards](docs/coding_standards.md) document for further details.
 
 ## Repository folder structure
-
-At the root level,
-
-- `create_wheel.sh` is used in the creation of the distribution wheel.
-- `setup.py` is used to specify dependencies required for the package and local development environment.
 
 The table below provides details of the folders and their content.
 
@@ -86,8 +97,8 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## Trademarks
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
+trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.

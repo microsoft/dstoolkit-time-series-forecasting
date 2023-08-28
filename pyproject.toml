@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "dstoolkit-tsff"
+version = "0.1.0"
+description = "A framework to do time series forecasting along that includes data processing, profiling, modeling, forecasting and error analysis"
+authors = ["Microsoft DS Toolkit Forecasting Team"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    {include = "tsff"}
+    ]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+pandas = "^2.0.2"
+numpy = "^1.25.0"
+pmdarima = "^2.0.3"
+pyspark = "^3.4.0"
+scikit-learn = "^1.2.2"
+scipy = "^1.10.1"
+prophet = "^1.1.4"
+pyyaml = "^6.0"
+xgboost = "^1.7.6"
+lightgbm = "^3.3.5"
+pip = "^23.1.2"
+matplotlib = {version = "^3.7.1", extras = ["EXTRAS"]}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.2"
+pytest-mock = "^3.11.1"
+pytest-cov = "^4.1.0"
+pyspark-test = "^0.2.0"
+flake8 = "^6.0.0"
+black = "^23.3.0"
+
+[tool.poetry.group.local.dependencies]
+ipykernel = "^6.23.2"
+matplotlib = "^3.7.1"
+jupyter = "^1.0.0"
+ipython = "^8.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
