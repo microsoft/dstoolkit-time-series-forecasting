@@ -5,7 +5,7 @@ from pyspark.sql import DataFrame as SparkDataFrame, SparkSession
 from pyspark_test import assert_pyspark_df_equal
 from typing import Dict, List
 
-from tsff.evaluation import WMapeEvaluator
+from tsfa.evaluation import WMapeEvaluator
 
 
 @pytest.fixture

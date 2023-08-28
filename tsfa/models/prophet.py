@@ -6,7 +6,7 @@ import datetime as dt
 from prophet import Prophet
 from typing import Callable
 
-from tsff.models import UnivariateModelWrapper
+from tsfa.models import UnivariateModelWrapper
 
 
 class ProphetModel(UnivariateModelWrapper):

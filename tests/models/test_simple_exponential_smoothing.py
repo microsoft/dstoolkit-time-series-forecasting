@@ -4,7 +4,7 @@ from typing import Dict
 
 import pandas as pd
 import pytest
-from tsff.models import SimpleExpSmoothingModel
+from tsfa.models import SimpleExpSmoothingModel
 
 
 @pytest.fixture(scope="session")

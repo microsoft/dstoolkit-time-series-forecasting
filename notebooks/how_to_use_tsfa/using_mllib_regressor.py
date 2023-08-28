@@ -13,12 +13,12 @@ from pprint import pprint
 
 # COMMAND ----------
 
-# TSFF library imports:
+# TSFA library imports:
 sys.path.insert(0, '../..')
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.feature_engineering.features import FeaturesUtils
-from tsff.models import *
-from tsff.evaluation import *
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.feature_engineering.features import FeaturesUtils
+from tsfa.models import *
+from tsfa.evaluation import *
 
 # COMMAND ----------
 

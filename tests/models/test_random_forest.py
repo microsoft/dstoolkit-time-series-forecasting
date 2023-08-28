@@ -2,7 +2,7 @@
 
 import pytest
 from pyspark.sql import Row, SparkSession, DataFrame as SparkDataFrame
-from tsff.models import RandomForestRegressorModel
+from tsfa.models import RandomForestRegressorModel
 from typing import Dict
 
 

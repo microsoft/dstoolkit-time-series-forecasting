@@ -13,8 +13,8 @@ from pprint import pprint
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.common.dataloader import DataLoader
-from tsff.feature_engineering.time_based import BasicTimeFeatures
+from tsfa.common.dataloader import DataLoader
+from tsfa.feature_engineering.time_based import BasicTimeFeatures
 
 # COMMAND ----------
 

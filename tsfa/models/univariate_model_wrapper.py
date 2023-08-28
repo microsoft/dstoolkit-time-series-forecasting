@@ -5,7 +5,7 @@ import pyspark.sql.functions as sf
 import pyspark.sql.types as st
 from pyspark.sql import DataFrame as SparkDataFrame
 from typing import Callable
-from tsff.models.base_model import BaseModel
+from tsfa.models.base_model import BaseModel
 
 
 class UnivariateModelWrapper(BaseModel):

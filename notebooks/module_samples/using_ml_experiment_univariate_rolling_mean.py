@@ -14,10 +14,10 @@ from typing import List, Dict, Tuple
 from pprint import pprint
 
 sys.path.insert(0, '../..')
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.models import RollingMeanModel
-from tsff.ml_experiment import MLExperiment
-from tsff.evaluation import WMapeEvaluator
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.models import RollingMeanModel
+from tsfa.ml_experiment import MLExperiment
+from tsfa.evaluation import WMapeEvaluator
 
 # COMMAND ----------
 
@@ -123,7 +123,7 @@ print(single_run_result.train_timeframe, single_run_result.test_timeframe)
 # MAGIC %md
 # MAGIC ##### When the user does not specify `time_splits`
 # MAGIC 
-# MAGIC As part of the experiment, `tsff` by default will do splitting of the dataframe `df` that is loaded from the mount (or custom prepared by the user) based on `data_splitting` specifications in the configuraion file.
+# MAGIC As part of the experiment, `tsfa` by default will do splitting of the dataframe `df` that is loaded from the mount (or custom prepared by the user) based on `data_splitting` specifications in the configuraion file.
 
 # COMMAND ----------
 
@@ -144,7 +144,7 @@ display(walk_forward_results.run_results[0].result_df)
 # MAGIC %md
 # MAGIC #### When the user specifies custom `time_splits` argument in the `walk_forward_model_training` method
 # MAGIC 
-# MAGIC TSFF will skip the in-built `data_splitting` functionality and leverage user provided custom time splits to do featurization and model 
+# MAGIC TSFA will skip the in-built `data_splitting` functionality and leverage user provided custom time splits to do featurization and model 
 
 # COMMAND ----------
 

@@ -1,7 +1,7 @@
 """This submodule contains an abstract multivariate model class."""
 from abc import abstractmethod
 from pyspark.sql import DataFrame as SparkDataFrame
-from tsff.models.base_model import BaseModel
+from tsfa.models.base_model import BaseModel
 
 
 class MultivariateModelWrapper(BaseModel):

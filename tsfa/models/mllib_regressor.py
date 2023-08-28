@@ -11,7 +11,7 @@ from pyspark.sql import DataFrame as SparkDataFrame
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler
 
-from tsff.models import MultivariateModelWrapper
+from tsfa.models import MultivariateModelWrapper
 
 # Supported Spark MLlib regressors:
 from pyspark.ml.regression import RandomForestRegressor

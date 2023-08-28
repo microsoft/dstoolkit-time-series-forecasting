@@ -1,7 +1,7 @@
 from pyspark.sql import DataFrame as SparkDataFrame
 from typing import List
 
-from tsff.evaluation import BaseEvaluator
+from tsfa.evaluation import BaseEvaluator
 
 
 class CompoundEvaluator:

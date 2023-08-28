@@ -5,7 +5,7 @@ from pyspark.sql import DataFrame as SparkDataFrame, SparkSession
 from pyspark_test import assert_pyspark_df_equal
 from typing import Dict, List
 
-from tsff.evaluation import OffsetErrEvaluator
+from tsfa.evaluation import OffsetErrEvaluator
 
 
 @pytest.fixture

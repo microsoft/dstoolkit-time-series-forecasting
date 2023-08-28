@@ -12,9 +12,9 @@ import time
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.feature_engineering.holidays import DaysToHolidays
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.common.dataloader import DataLoader
+from tsfa.feature_engineering.holidays import DaysToHolidays
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.common.dataloader import DataLoader
 
 # COMMAND ----------
 

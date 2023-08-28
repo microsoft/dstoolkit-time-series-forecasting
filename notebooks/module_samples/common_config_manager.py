@@ -9,7 +9,7 @@ from pprint import pprint
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
+from tsfa.common.config_manager import ConfigManager
 
 # COMMAND ----------
 

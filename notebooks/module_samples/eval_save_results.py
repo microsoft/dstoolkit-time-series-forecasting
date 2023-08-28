@@ -8,9 +8,9 @@
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.common.dataloader import DataLoader
-from tsff.evaluation.save_results import save_forecast_values
-from tsff.common.config_manager import ConfigManager
+from tsfa.common.dataloader import DataLoader
+from tsfa.evaluation.save_results import save_forecast_values
+from tsfa.common.config_manager import ConfigManager
 from pprint import pprint
 
 # COMMAND ----------

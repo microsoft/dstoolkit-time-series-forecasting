@@ -11,10 +11,10 @@ from pprint import pprint
 
 # COMMAND ----------
 
-# TSFF library imports:
+# TSFA library imports:
 sys.path.insert(0, '../..')
-from tsff.common.dataloader import DataLoader
-from tsff.feature_engineering.one_hot_encoder import OneHotEncode
+from tsfa.common.dataloader import DataLoader
+from tsfa.feature_engineering.one_hot_encoder import OneHotEncode
 
 # COMMAND ----------
 

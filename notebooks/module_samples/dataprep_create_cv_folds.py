@@ -9,9 +9,9 @@ import sys
 import json
 from pprint import pprint
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
-from tsff.data_prep import data_validation
-from tsff.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.common.config_manager import ConfigManager
+from tsfa.data_prep import data_validation
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
 
 # COMMAND ----------
 

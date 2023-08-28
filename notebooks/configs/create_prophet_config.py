@@ -36,9 +36,9 @@ spark.conf.set("spark.databricks.io.cache.enabled", "true")
 import json
 import sys
 from pprint import pprint
-# TSFF library imports:
+# TSFA library imports:
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
+from tsfa.common.config_manager import ConfigManager
 
 # COMMAND ----------
 

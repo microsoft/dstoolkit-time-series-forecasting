@@ -4,7 +4,7 @@ import pytest
 from pyspark.sql import DataFrame as SparkDataFrame, SparkSession
 from pyspark_test import assert_pyspark_df_equal
 
-from tsff.evaluation import CompoundEvaluator, OffsetErrEvaluator, WMapeEvaluator
+from tsfa.evaluation import CompoundEvaluator, OffsetErrEvaluator, WMapeEvaluator
 
 
 @pytest.fixture

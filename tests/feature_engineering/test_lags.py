@@ -4,8 +4,8 @@ import pytest
 import numpy as np
 from pyspark.sql import Row, SparkSession, DataFrame as SparkDataFrame
 from pyspark.sql.functions import to_date, count
-from tsff.data_prep.data_validation import DataConnectionError
-from tsff.feature_engineering.lags import LagsFeaturizer
+from tsfa.data_prep.data_validation import DataConnectionError
+from tsfa.feature_engineering.lags import LagsFeaturizer
 
 
 @pytest.fixture(scope='module')

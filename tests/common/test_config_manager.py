@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Dict
 
 import pytest
-from tsff.common.config_manager import ConfigManager
+from tsfa.common.config_manager import ConfigManager
 
 
 @pytest.fixture

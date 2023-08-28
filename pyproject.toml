@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "dstoolkit-tsff"
+name = "dstoolkit-tsfa"
 version = "0.1.0"
 description = "A framework to do time series forecasting along that includes data processing, profiling, modeling, forecasting and error analysis"
 authors = ["Microsoft DS Toolkit Forecasting Team"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    {include = "tsff"}
+    {include = "tsfa"}
     ]
 
 [tool.poetry.dependencies]

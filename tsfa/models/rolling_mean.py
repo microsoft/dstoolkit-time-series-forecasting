@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from typing import Callable
 
-from tsff.models import UnivariateModelWrapper
+from tsfa.models import UnivariateModelWrapper
 
 
 class RollingMeanModel(UnivariateModelWrapper):

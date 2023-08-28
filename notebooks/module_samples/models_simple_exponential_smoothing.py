@@ -13,9 +13,9 @@ from pyspark.sql import DataFrame as SparkDataFrame
 from typing import List, Dict, Tuple
 
 sys.path.insert(0, '../..')
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.feature_engineering.features import FeaturesUtils
-from tsff.models import SimpleExpSmoothingModel
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.feature_engineering.features import FeaturesUtils
+from tsfa.models import SimpleExpSmoothingModel
 
 # COMMAND ----------
 

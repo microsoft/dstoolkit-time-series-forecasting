@@ -1,8 +1,8 @@
-# Databricks notebook source
+# Databricks notebook sourcesource
 # MAGIC %md
-# MAGIC # Using your own dataframe for TSFF
+# MAGIC # Using your own dataframe for TSFA
 # MAGIC 
-# MAGIC This notebook demonstrates how you can load a dataframe that you prepared external to TSFF, make transformations to it, and then leverage TSFF with the in-memory dataframe (without needing to save to a delta table). This notebook uses a simplified config for demonstration purposes.
+# MAGIC This notebook demonstrates how you can load a dataframe that you prepared external to TSFA, make transformations to it, and then leverage TSFA with the in-memory dataframe (without needing to save to a delta table). This notebook uses a simplified config for demonstration purposes.
 
 # COMMAND ----------
 
@@ -13,10 +13,10 @@ import pyspark.sql.functions as sf
 from pprint import pprint
 
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.feature_engineering.features import FeaturesUtils
-from tsff.models import RandomForestRegressorModel
+from tsfa.common.config_manager import ConfigManager
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.feature_engineering.features import FeaturesUtils
+from tsfa.models import RandomForestRegressorModel
 
 # COMMAND ----------
 

@@ -7,8 +7,8 @@
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.common.dataloader import DataLoader
-from tsff.evaluation import CompoundEvaluator, WMapeEvaluator
+from tsfa.common.dataloader import DataLoader
+from tsfa.evaluation import CompoundEvaluator, WMapeEvaluator
 from pprint import pprint
 from pyspark.sql import functions as f
 

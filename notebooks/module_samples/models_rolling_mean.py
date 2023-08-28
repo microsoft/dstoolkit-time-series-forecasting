@@ -10,8 +10,8 @@ import time
 from pprint import pprint
 
 sys.path.insert(0, '../..')
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.models import RollingMeanModel
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.models import RollingMeanModel
 
 # COMMAND ----------
 

@@ -4,7 +4,7 @@ from pyspark.sql.types import StringType, DoubleType
 from typing import Dict
 from pyspark.sql import functions as sf
 from pyspark.sql import DataFrame as SparkDataFrame, SparkSession
-from tsff.common.dataloader import DataLoader
+from tsfa.common.dataloader import DataLoader
 
 
 def save_forecast_values(spark: SparkSession, df_results: SparkDataFrame, config: Dict):
