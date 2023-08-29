@@ -51,7 +51,7 @@ The table below provides details of the folders and their content.
 
 | Folder name | Description |
 |-|-|
-| docs | Architectural Design Records, Accelerator documentation, recommendations, and findings from investigations are stored in this folder.|
+| docs | Accelerator documentation, and references to other forecasting resources are stored in this folder.|
 | notebooks | Comprises of sample notebooks illustrating specific TSFA component usage and example notebooks to illustrate the various TSFA usage scenarios, emphasizing flexibility as well as end-to-end model training with walk forward cross validation.|
 | tests | Contains unit tests for core accelerator functionality
 | tsfa/common | Contains Classes that have common helper methods used for data preparation and model training. E.g. `ConfigParser` class that used to parse, get, and set configuration parameters.|

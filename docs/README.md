@@ -4,7 +4,6 @@ This folder contains supporting documentation regarding the development of the T
 
 Subdirectories:
 
-- **decisions**: Directory containing ADRs (Architectural Decision Records), which documents technical and design decisions made by the TSFA team during development, as well as the rationale.
 - **images**: Images/screenshots used by documentation files in this directory.
 - **research_and_references**: Contains files that document and summarize the results of various research and recommendations conducted through the development of the Time Series Forecasting Accelerator, as well as links to various reference materials for time series forecasting.
 
