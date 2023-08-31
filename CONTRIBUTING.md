@@ -1,4 +1,4 @@
-# Contributing to the Experimentation Framework (EF)
+# Contributing to Time Series Forecasting Accelerator (TSFA)
 
 This project welcomes contributions and suggestions.
 
@@ -14,7 +14,7 @@ If you find a bug in the source code or a mistake in the documentation, you can 
 
 You can *request* a new feature by [submitting an issue](#submit-issue) to the Repository.
 
-If you would like to *implement* a new feature, please submit an issue with a proposal for your work first, to be sure that it is aligned with existing work on the framework and prioritized and tracked accordingly. The proposal doesn't need to be anything too long or detailed - the goal is to make sure that the team is aware of the change, that they can help with any design direction, and advise of any similar work that might have been or is being done. Also, if it's a significant piece of work, the Design Authority will need to be involved in the approval and prioritization.
+If you would like to *implement* a new feature, please submit an issue with a proposal for your work first, to be sure that it is aligned with existing work on the accelerator and prioritized and tracked accordingly. The proposal doesn't need to be anything too long or detailed - the goal is to make sure that the team is aware of the change, that they can help with any design direction, and advise of any similar work that might have been or is being done. Also, if it's a significant piece of work, the Design Authority will need to be involved in the approval and prioritization.
 
 See [submitting a PR](#submit-pr) for details on writing code for your new feature.
 
@@ -57,7 +57,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 - If your change involves new features or models, please ensure that these are added to the `docs`
 - If your change involves any significant decisions where you've considered trade-offs and chosen the option you think is best, consider authoring an ADR in [./docs/decisions](./docs/decisions)
 - Create a PR, including evidence that (like screenshots) that end-to-end testing has been conducted to ensure that the modifications integrate with the existing codebase and help the reviewers understand how they're expected to work
-- The TSFF team will review it and get back to you, possibly with suggested changes:
+- The TSFA team will review it and get back to you, possibly with suggested changes:
   - If you have questions, please reach out to the reviewers and we'll go over our feedback and come to consensus.
   - Make the required updates and push to remote, then ensure the PR is updated.
 
