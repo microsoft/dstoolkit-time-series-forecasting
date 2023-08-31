@@ -22,7 +22,26 @@
         - Sample notebooks illustrating the various TSFA usage scenarios, emphasizing flexibility and end-to-end model training with walk-forward cross validation. These notebooks can be found in the [notebooks/how_to_use_tsfa](notebooks/how_to_use_tsfa) folder.
 - [Documentation](docs) to support TSFA understanding and usage.
 
-## Prerequisites
+## Setup
+
+### Requirements
+
+- Python `3.10.x` - use [pyenv](https://github.com/pyenv/pyenv) for Python
+  version management.
+- [Poetry](https://python-poetry.org/)
+
+### Quick Start
+
+1. Clone the repo locally.
+2. `cd` into the project
+3. `poetry install` - This will leverage the poetry configuration file `pyproject.toml` and create a python virtual environment for you.
+4. `poetry add <package>` - This will let you add new python dependencies from the command line
+5. `poetry shell` then spins up the local virtual environment for you to develop and test code.
+6. `poetry build` creates a wheel package of the `tsff` code.
+
+## Time Series forecasting model development lifecycle
+
+Refer to the [Time Series forecasting model development lifecycle](docs/ml_lifecycle.md) documentation for an examination of the proposed model development lifecycle and the phases TSFF can be used. However, its important to consider the following prerequisites before diving into model development:
 
 1. The experimentation dataset should be created independent of this accelerator.
     - It is the responsibility of the Data Scientist and Engineer to ensure reconciliation and correctness of the data against source systems.
@@ -41,11 +60,6 @@ Refer to the [Time Series forecasting model development lifecycle](docs/ml_lifec
 Refer to [Time Series Forecasting Accelerator coding standards](docs/coding_standards.md) document for further details.
 
 ## Repository folder structure
-
-At the root level,
-
-- `create_wheel.sh` is used in the creation of the distribution wheel.
-- `setup.py` is used to specify dependencies required for the package and local development environment.
 
 The table below provides details of the folders and their content.
 
