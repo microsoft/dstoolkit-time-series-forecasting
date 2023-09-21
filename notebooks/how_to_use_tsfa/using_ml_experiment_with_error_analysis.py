@@ -15,7 +15,7 @@
 # MAGIC Note: To see an ends-to-end workflow where the MLExperiment class is used to run a walk-forward cross validation ML experiment and log its results to MLFlow, refer to the **run_ml_experiment_mlflow** notebook.
 # MAGIC
 # MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
-# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is updated to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
+# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is uploaded to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
 
 # COMMAND ----------
 

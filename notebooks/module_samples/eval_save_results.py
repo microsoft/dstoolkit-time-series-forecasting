@@ -31,7 +31,7 @@ pprint(config)
 # MAGIC ### Load dataset table as specified in config dictionary
 # MAGIC
 # MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
-# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is updated to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
+# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is uploaded to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
 
 # COMMAND ----------
 
