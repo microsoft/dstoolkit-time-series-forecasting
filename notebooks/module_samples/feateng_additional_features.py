@@ -67,6 +67,8 @@ config = {
 
 # MAGIC %md
 # MAGIC #### Load data, create a "post_coldwar" feature (externally to `tsfa`) and split train and test dataframes
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 

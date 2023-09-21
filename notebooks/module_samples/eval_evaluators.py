@@ -2,6 +2,8 @@
 # MAGIC %md
 # MAGIC # Evaluators Sample Notebook
 # MAGIC This notebook demonstrates how to call different evaluators (such as WMapeEvaluator, OffsetErrEvaluator, or CompoundEvaluator) for your workflows.
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 
@@ -15,6 +17,7 @@ from pyspark.sql import functions as f
 # COMMAND ----------
 
 # Load test data:
+
 loader = DataLoader(spark)
 df = loader.read_df_from_mount(db_name="sample_data",
                                table_name="orange_juice_small",

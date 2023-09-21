@@ -78,6 +78,8 @@ pprint(config)
 
 # MAGIC %md
 # MAGIC ### Initialize data prep utils and load dataset
+# MAGIC
+# MAGIC To load the data successfully using the default `prophet_config_small.json` config file, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 

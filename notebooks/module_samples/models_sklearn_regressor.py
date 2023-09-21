@@ -29,6 +29,9 @@ from tsfa.evaluation import *
 # MAGIC %md
 # MAGIC 
 # MAGIC #### Load config and read in data
+# MAGIC
+# MAGIC To read the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
+# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is updated to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
 
 # COMMAND ----------
 

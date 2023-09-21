@@ -3,6 +3,9 @@
 # MAGIC # Using your own dataframe for TSFA
 # MAGIC 
 # MAGIC This notebook demonstrates how you can load a dataframe that you prepared external to TSFA, make transformations to it, and then leverage TSFA with the in-memory dataframe (without needing to save to a delta table). This notebook uses a simplified config for demonstration purposes.
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
+# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is updated to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
 
 # COMMAND ----------
 

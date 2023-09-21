@@ -21,6 +21,8 @@ from tsfa.models import SimpleExpSmoothingModel
 
 # MAGIC %md
 # MAGIC ### Create config and read in data
+# MAGIC
+# MAGIC To read the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 
