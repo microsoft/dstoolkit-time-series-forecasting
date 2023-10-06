@@ -77,7 +77,7 @@ class ErrorAnalysis:
         )
         plt.ylabel("walk_name")
         plt.xlabel(f"prediction {self.time_colname}")
-        plt.yticks(rotation="360")
+        plt.yticks(rotation=360)
         plt.show()
 
     def plot_time(self, df: SparkDataFrame) -> None:
