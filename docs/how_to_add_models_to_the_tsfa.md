@@ -1,6 +1,6 @@
-# How to add a new model to Time Series Forecasting Framework?
+# How to add a new model to Time Series Forecasting Accelerator (TSFA)?
 
-In this document, we give a brief overview of how models are setup in tsff, and how a developer can add a new one.
+In this document, we give a brief overview of how models are setup in TSFA, and how a developer can add a new one.
 
 ![models](./images/model_classes.png)
 
@@ -20,16 +20,16 @@ Below is an example showing a step by step method for the addition of a new mode
 
 ## Step-1: Add the model package<br>
 
-This step will enable the application of the algorithm needed for uni/multi-variate model<br>
+This step will add the model package dependency to Peotry<br>
 
-- Add the package and the dependencies needed for the model in the requirements file `.azure_pipelines/requirements-pr.txt`
+- Add the package and the dependencies needed for the model in the configuration file `pyproject.toml`
 <br>The figure below illustrates the addition of `prophet package` <br><br>
 ![prophet](./images/prophet_package.png)
 <br>This will ensure that you have the package installed in the library<br>
 
 ## Step-2 : Create a new python script with the model name<br>
 
-- Create a new python script for the new model as `[model_name].py` in the folder `tsff/models`
+- Create a new python script for the new model as `[model_name].py` in the folder `tsfa/models`
  <br>The figure below illustrates the model prophet.py added to the folder</br><br>
  ![prophet_file](./images/model_name_prophet.png)
 <br>
@@ -39,11 +39,11 @@ This step will enable the application of the algorithm needed for uni/multi-vari
 - Import the necessary package libraries needed for the model in the new file
 - Also, import the model wrapper<br>
   - If the model is univariate import the wrapper as follows:<br>
-   `from tsff.models import UnivariateModelWrapper`<br>
+   `from tsfa.models import UnivariateModelWrapper`<br>
   - If the model is multivariate import the wrapper as follows:<br>
-   `from tsff.models import MultivariateModelWrapper`<br>
+   `from tsfa.models import MultivariateModelWrapper`<br>
   - If the model would not need these wrapper classes, import the `BaseModel`<br>
-   `from tsff.models.base_model import BaseModel`
+   `from tsfa.models.base_model import BaseModel`
 
 ## Step-4:  Create class and the functions
 
@@ -78,14 +78,14 @@ Below is an example showing the model_params in the config for Prophet<br>
 
 ## Step-7 Add unit tests for the new model
 
-- Write unit test cases for the new model and add it in the path `tsff/test/models`
-- Write the script to test independent functionalities written in the new model in the path `tsff/notebooks/module_tests`.
+- Write unit test cases for the new model and add it in the path `tsfa/test/models`
+- Write the script to test independent functionalities written in the new model in the path `tsfa/notebooks/module_tests`.
 
 ## Step-8 Add Sample Notebook for the model
 
-- Add the sample notebook that illustrates the configuration dictionary schema for the model as  `run_01_create_config_[model_name]` in the path `tsff/notebooks/samples`.<br>
+- Add the sample notebook that illustrates the configuration dictionary schema for the model as  `run_01_create_config_[model_name]` in the path `tsfa/notebooks/samples`.<br>
 This notebook will create a parameterized Json configuration file that specifies the experiment parameters.
 
 ## Step-9 Raise the PR in Azure DevOps
 
-- Once the new model contribution development is completed, tested and validated to ensure the model class works as expected, raise a PR and add the `tsff` team as required reviewers.
+- Once the new model contribution development is completed, tested and validated to ensure the model class works as expected, raise a PR and add the `TSFA` team as required reviewers.
