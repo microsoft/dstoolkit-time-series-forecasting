@@ -2,7 +2,7 @@ import pyspark.sql.functions as sf
 from pyspark.sql import Column
 from typing import Optional
 
-from tsff.evaluation import BaseEvaluator
+from tsfa.evaluation import BaseEvaluator
 
 
 class WMapeEvaluator(BaseEvaluator):

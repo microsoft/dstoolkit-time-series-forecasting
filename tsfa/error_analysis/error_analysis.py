@@ -4,7 +4,7 @@ import numpy as np
 import pylab as pl
 import seaborn as sns
 from typing import Dict
-from tsff.evaluation import WMapeEvaluator
+from tsfa.evaluation import WMapeEvaluator
 from pyspark.sql import DataFrame as SparkDataFrame
 
 
@@ -77,7 +77,7 @@ class ErrorAnalysis:
         )
         plt.ylabel("walk_name")
         plt.xlabel(f"prediction {self.time_colname}")
-        plt.yticks(rotation="360")
+        plt.yticks(rotation=360)
         plt.show()
 
     def plot_time(self, df: SparkDataFrame) -> None:

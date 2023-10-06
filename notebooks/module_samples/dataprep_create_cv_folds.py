@@ -9,9 +9,9 @@ import sys
 import json
 from pprint import pprint
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
-from tsff.data_prep import data_validation
-from tsff.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.common.config_manager import ConfigManager
+from tsfa.data_prep import data_validation
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
 
 # COMMAND ----------
 
@@ -52,6 +52,8 @@ pprint(config)
 
 # MAGIC %md
 # MAGIC ### Create CV folds based on `data_splitting` parameters
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 

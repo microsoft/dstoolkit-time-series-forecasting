@@ -13,6 +13,9 @@
 # MAGIC - How to use `walk_forward_model_training` to forecast into the future.
 # MAGIC 
 # MAGIC Note: To see an ends-to-end workflow where the MLExperiment class is used to run a walk-forward cross validation ML experiment and log its results to MLFlow, refer to the **run_ml_experiment_mlflow** notebook.
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
+# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is uploaded to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
 
 # COMMAND ----------
 
@@ -25,12 +28,12 @@ from pprint import pprint
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.models import RandomForestRegressorModel
-from tsff.ml_experiment import MLExperiment
-from tsff.evaluation import WMapeEvaluator
-from tsff.error_analysis import ErrorAnalysis
+from tsfa.common.config_manager import ConfigManager
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.models import RandomForestRegressorModel
+from tsfa.ml_experiment import MLExperiment
+from tsfa.evaluation import WMapeEvaluator
+from tsfa.error_analysis import ErrorAnalysis
 
 # COMMAND ----------
 
@@ -47,7 +50,6 @@ config_path = f"../configs/json/{config_filename}"
 # methods to validate the contents of the config.
 cnf_manager = ConfigManager(path_to_config=config_path)
 config = cnf_manager.get()
-config['dataset']['db_name'] = 'default'
 pprint(config)
 
 # COMMAND ----------
@@ -78,7 +80,7 @@ exp = MLExperiment(spark_session=spark,
 # MAGIC %md
 # MAGIC **1. When the user does not specify custom `time_splits` argument in the `walk_forward_model_training` method**
 # MAGIC
-# MAGIC As part of the experiment, TSFF by default will do splitting of the dataframe `df` that is loaded from the mount (or custom prepared by the user) based on `data_splitting` specifications in the configuraion file.
+# MAGIC As part of the experiment, TSFA by default will do splitting of the dataframe `df` that is loaded from the mount (or custom prepared by the user) based on `data_splitting` specifications in the configuraion file.
 
 # COMMAND ----------
 

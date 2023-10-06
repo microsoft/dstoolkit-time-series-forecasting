@@ -8,9 +8,9 @@
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.common.dataloader import DataLoader
-from tsff.evaluation.save_results import save_forecast_values
-from tsff.common.config_manager import ConfigManager
+from tsfa.common.dataloader import DataLoader
+from tsfa.evaluation.save_results import save_forecast_values
+from tsfa.common.config_manager import ConfigManager
 from pprint import pprint
 
 # COMMAND ----------
@@ -29,6 +29,9 @@ pprint(config)
 # MAGIC %md
 # MAGIC 
 # MAGIC ### Load dataset table as specified in config dictionary
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
+# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is uploaded to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
 
 # COMMAND ----------
 

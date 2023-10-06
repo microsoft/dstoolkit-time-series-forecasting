@@ -2,7 +2,7 @@
 
 import pandas as pd
 import pytest
-from tsff.models import ProphetModel
+from tsfa.models import ProphetModel
 from typing import Dict
 
 

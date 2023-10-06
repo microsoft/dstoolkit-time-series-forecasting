@@ -9,7 +9,7 @@ from pyspark.sql import SparkSession, types as st
 from pyspark_test import assert_pyspark_df_equal
 from typing import Dict, List, Tuple
 
-from tsff.feature_engineering.features import FeaturesUtils
+from tsfa.feature_engineering.features import FeaturesUtils
 
 
 @pytest.fixture(scope='session')

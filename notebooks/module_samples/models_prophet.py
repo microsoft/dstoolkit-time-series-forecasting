@@ -11,14 +11,17 @@ from pprint import pprint
 import pyspark.sql.functions as sf
 
 sys.path.insert(0, '../..')
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.feature_engineering.features import FeaturesUtils
-from tsff.models import ProphetModel
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.feature_engineering.features import FeaturesUtils
+from tsfa.models import ProphetModel
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC ### Define config and read in data
+# MAGIC
+# MAGIC To read the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
+# MAGIC Additionally, ensure the **`data/dominicks_oj_data/holidays_1990_to_1993.json`** file is uploaded to `/dbfs/FileStore/tables/holidays_1990_to_1993.json`.
 
 # COMMAND ----------
 

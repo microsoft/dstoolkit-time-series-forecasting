@@ -13,10 +13,10 @@ import pyspark.sql.functions as sf
 from pprint import pprint
 
 sys.path.insert(0, '../..')
-from tsff.feature_engineering.features import FeaturesUtils
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.common.dataloader import DataLoader
-from tsff.models import RandomForestRegressorModel
+from tsfa.feature_engineering.features import FeaturesUtils
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.common.dataloader import DataLoader
+from tsfa.models import RandomForestRegressorModel
 
 # COMMAND ----------
 
@@ -66,7 +66,9 @@ config = {
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### Load data, create a "post_coldwar" feature (externally to `tsff`) and split train and test dataframes
+# MAGIC #### Load data, create a "post_coldwar" feature (externally to `tsfa`) and split train and test dataframes
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 

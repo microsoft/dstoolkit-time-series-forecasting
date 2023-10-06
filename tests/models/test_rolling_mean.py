@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 import pytest
-from tsff.models import RollingMeanModel
+from tsfa.models import RollingMeanModel
 from typing import Dict
 
 

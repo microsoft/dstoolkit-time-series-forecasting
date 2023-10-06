@@ -11,15 +11,17 @@ from pprint import pprint
 
 # COMMAND ----------
 
-# TSFF library imports:
+# TSFA library imports:
 sys.path.insert(0, '../..')
-from tsff.common.dataloader import DataLoader
-from tsff.feature_engineering.one_hot_encoder import OneHotEncode
+from tsfa.common.dataloader import DataLoader
+from tsfa.feature_engineering.one_hot_encoder import OneHotEncode
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC #### Create test config and load data
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 

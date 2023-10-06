@@ -1,17 +1,17 @@
 [tool.poetry]
-name = "dstoolkit-tsff"
+name = "dstoolkit-tsfa"
 version = "0.1.0"
 description = "A framework to do time series forecasting along that includes data processing, profiling, modeling, forecasting and error analysis"
 authors = ["Microsoft DS Toolkit Forecasting Team"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    {include = "tsff"}
+    {include = "tsfa"}
     ]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-pandas = "^2.0.2"
+pandas = "1.4.0"
 numpy = "^1.25.0"
 pmdarima = "^2.0.3"
 pyspark = "^3.4.0"

@@ -1,7 +1,9 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC # Data Preparation: Data validation
-# MAGIC This notebook demonstrates the different data validation steps that take place throughout TSFF, such as checking pandas vs spark dataframes, checking for duplicate rows, checking nulls, checking expected column names of data that was loaded, and data leakage between splits of the dataframe given we are working with time series.
+# MAGIC This notebook demonstrates the different data validation steps that take place throughout TSFA, such as checking pandas vs spark dataframes, checking for duplicate rows, checking nulls, checking expected column names of data that was loaded, and data leakage between splits of the dataframe given we are working with time series.
+# MAGIC
+# MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/dominicks_oj_small.csv` file is uploaded successfully to **dbfs:/FileStore/tables/dominicks_oj_small.csv**.
 
 # COMMAND ----------
 
@@ -10,7 +12,7 @@ from pprint import pprint
 
 import sys
 sys.path.insert(0, '../..')
-from tsff.data_prep.data_validation import *
+from tsfa.data_prep.data_validation import *
 
 # COMMAND ----------
 

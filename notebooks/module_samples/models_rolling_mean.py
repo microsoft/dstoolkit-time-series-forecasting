@@ -10,13 +10,15 @@ import time
 from pprint import pprint
 
 sys.path.insert(0, '../..')
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.models import RollingMeanModel
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.models import RollingMeanModel
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC ### Define config and read in data
+# MAGIC
+# MAGIC To read the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 

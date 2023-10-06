@@ -3,7 +3,7 @@
 # MAGIC # Run ML Experiment and Log to MLFlow
 # MAGIC ### Overview
 # MAGIC 
-# MAGIC This notebook demonstrates how to use TSFF end-to-end to run a ML experiment. The objective of this notebook is to provide a reusable framework for model training and evaluation. The specific parameters of the experiment is provided in a JSON config file, which can be created using the **create_*_config** notebook for your model type (e.g. `create_random_forest_config`). This notebook will use the JSON config to read the input DataFrame, compute features/transformations, train the specified ML model, and evaluate model performance using walk-forward cross validation. Additionally, for traceability, re-producability, and ease of comparison, the model artifacts produced will be logged to MLFlow.
+# MAGIC This notebook demonstrates how to use TSFA end-to-end to run a ML experiment. The objective of this notebook is to provide a reusable framework for model training and evaluation. The specific parameters of the experiment is provided in a JSON config file, which can be created using the **create_*_config** notebook for your model type (e.g. `create_random_forest_config`). This notebook will use the JSON config to read the input DataFrame, compute features/transformations, train the specified ML model, and evaluate model performance using walk-forward cross validation. Additionally, for traceability, reproducibility, and ease of comparison, all model artifacts will be logged to MLFlow.
 # MAGIC 
 # MAGIC ### Pre-requisites
 # MAGIC 
@@ -42,13 +42,13 @@ from typing import Dict, Union
 
 # COMMAND ----------
 
-# TSFF library imports:
+# TSFA library imports:
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.models import RandomForestRegressorModel, ProphetModel, RollingMeanModel, SimpleExpSmoothingModel
-from tsff.ml_experiment import MLExperiment
-from tsff.evaluation import __name__ as evaluation_module_name, BaseEvaluator, CompoundEvaluator
+from tsfa.common.config_manager import ConfigManager
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.models import RandomForestRegressorModel, ProphetModel, RollingMeanModel, SimpleExpSmoothingModel
+from tsfa.ml_experiment import MLExperiment
+from tsfa.evaluation import __name__ as evaluation_module_name, BaseEvaluator, CompoundEvaluator
 
 # COMMAND ----------
 
@@ -78,6 +78,8 @@ pprint(config)
 
 # MAGIC %md
 # MAGIC ### Initialize data prep utils and load dataset
+# MAGIC
+# MAGIC To load the data successfully using the default `prophet_config_small.json` config file, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
 
 # COMMAND ----------
 

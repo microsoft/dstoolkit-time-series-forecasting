@@ -9,11 +9,11 @@ from typing import Dict, Type, Union, Optional, List
 from pyspark.sql import DataFrame as SparkDataFrame, SparkSession
 import time
 
-from tsff.data_prep.data_prep_utils import DataPrepUtils
-from tsff.evaluation.compound_evaluator import CompoundEvaluator
-from tsff.feature_engineering.features import FeaturesUtils
-from tsff.models.base_model import BaseModel
-from tsff.evaluation import BaseEvaluator
+from tsfa.data_prep.data_prep_utils import DataPrepUtils
+from tsfa.evaluation.compound_evaluator import CompoundEvaluator
+from tsfa.feature_engineering.features import FeaturesUtils
+from tsfa.models.base_model import BaseModel
+from tsfa.evaluation import BaseEvaluator
 from dataclasses import dataclass
 
 
@@ -159,7 +159,7 @@ class MLExperiment:
             # dataframe for null values, duplicate rows before progressing with further steps
             self.data_prep.validate_dataframe(df)
         else:
-            # Time splits are created within tsff, based on dataframe and config specifications.
+            # Time splits are created within tsfa, based on dataframe and config specifications.
             # Sanity validation checks are done when these splits are created
             time_splits = self.data_prep.train_val_holdout_split(df)
 

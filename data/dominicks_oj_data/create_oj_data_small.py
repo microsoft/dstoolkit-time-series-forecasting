@@ -97,5 +97,8 @@ schema = StructType([
 # COMMAND ----------
 
 # Save df
+# Create database schema
+spark.sql("CREATE SCHEMA IF NOT EXISTS sample_data")
+
 df_sample_spark = spark.createDataFrame(df_sample, schema=schema)
 df_sample_spark.write.mode("overwrite").option("overwriteSchema", "true").format("delta").saveAsTable("sample_data.orange_juice_small")

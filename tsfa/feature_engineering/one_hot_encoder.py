@@ -56,7 +56,7 @@ class OneHotEncode:
             raise RuntimeError("Cannot call transform() method before fit().")
 
         # Update _feature_colnames:
-        self._feature_colnames = self._encoder.get_feature_names(self._categorical_colnames).tolist()
+        self._feature_colnames = self._encoder.get_feature_names_out(self._categorical_colnames).tolist()
 
         # Replace spaces in output columns if replace_colname_spaces is True:
         if replace_colname_spaces:

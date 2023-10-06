@@ -6,7 +6,7 @@ from pyspark.sql import DataFrame as SparkDataFrame
 from pyspark.sql.types import StructType, StructField, FloatType, StringType, DateType
 from functools import partial
 
-from tsff.data_prep.data_validation import check_date_connection, DataConnectionError
+from tsfa.data_prep.data_validation import check_date_connection, DataConnectionError
 
 
 class LagsFeaturizer:

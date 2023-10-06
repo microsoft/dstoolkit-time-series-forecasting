@@ -48,9 +48,9 @@ from pprint import pprint
 
 # COMMAND ----------
 
-# TSFF library imports:
+# TSFA library imports:
 sys.path.insert(0, '../..')
-from tsff.common.config_manager import ConfigManager
+from tsfa.common.config_manager import ConfigManager
 
 # COMMAND ----------
 

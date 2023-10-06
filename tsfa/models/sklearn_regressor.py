@@ -16,7 +16,7 @@ from abc import abstractmethod
 from pyspark.sql import SparkSession, DataFrame as SparkDataFrame
 from sklearn.pipeline import Pipeline as SklPipeline
 
-from tsff.models import MultivariateModelWrapper
+from tsfa.models import MultivariateModelWrapper
 
 # Supported scikit-learn regressors:
 from sklearn.linear_model import LinearRegression as SklLinearRegression

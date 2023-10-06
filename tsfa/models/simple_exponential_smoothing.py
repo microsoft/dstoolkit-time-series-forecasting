@@ -5,7 +5,7 @@ from typing import Callable
 import numpy as np
 import pandas as pd
 from statsmodels.tsa.holtwinters import SimpleExpSmoothing
-from tsff.models import UnivariateModelWrapper
+from tsfa.models import UnivariateModelWrapper
 
 
 class SimpleExpSmoothingModel(UnivariateModelWrapper):
