@@ -51,7 +51,6 @@ Refer to the [Time Series forecasting model development lifecycle](docs/ml_lifec
     - It is encouraged to dedicate time for data understanding prior to experimentation. Users should have performed basic EDA steps such as data validation and missing value imputations prior to using the framework.
     - It is also encouraged to create an experiment hypotheses backlog such that the experiments are planned, specifying features and ML algorithms to consider.
 
-
 ## Coding standards
 
 Refer to [Time Series Forecasting Framework coding standards](docs/coding_standards.md) document for further details.

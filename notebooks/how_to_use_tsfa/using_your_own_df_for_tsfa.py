@@ -1,4 +1,4 @@
-# Databricks notebook sourcesource
+# Databricks notebook source
 # MAGIC %md
 # MAGIC # Using your own dataframe for TSFA
 # MAGIC 
