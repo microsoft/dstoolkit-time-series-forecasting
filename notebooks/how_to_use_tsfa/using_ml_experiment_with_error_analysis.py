@@ -50,7 +50,6 @@ config_path = f"../configs/json/{config_filename}"
 # methods to validate the contents of the config.
 cnf_manager = ConfigManager(path_to_config=config_path)
 config = cnf_manager.get()
-config['dataset']['db_name'] = 'default'
 pprint(config)
 
 # COMMAND ----------
