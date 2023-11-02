@@ -21,7 +21,7 @@ prophet = "^1.1.4"
 pyyaml = "^6.0"
 xgboost = "^1.7.6"
 lightgbm = "^3.3.5"
-pip = "^23.1.2"
+pip = "^23.3"
 matplotlib = {version = "^3.7.1", extras = ["EXTRAS"]}
 
 [tool.poetry.group.dev.dependencies]
