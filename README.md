@@ -37,11 +37,11 @@
 3. `poetry install` - This will leverage the poetry configuration file `pyproject.toml` and create a python virtual environment for you.
 4. `poetry add <package>` - This will let you add new python dependencies from the command line
 5. `poetry shell` then spins up the local virtual environment for you to develop and test code.
-6. `poetry build` creates a wheel package of the `tsff` code.
+6. `poetry build` creates a wheel package of the `tsfa` code.
 
 ## Time Series forecasting model development lifecycle
 
-Refer to the [Time Series forecasting model development lifecycle](docs/ml_lifecycle.md) documentation for an examination of the proposed model development lifecycle and the phases TSFF can be used. However, its important to consider the following prerequisites before diving into model development:
+Refer to the [Time Series forecasting model development lifecycle](docs/ml_lifecycle.md) documentation for an examination of the proposed model development lifecycle and the phases TSFA can be used. However, its important to consider the following prerequisites before diving into model development:
 
 1. The experimentation dataset should be created independent of this accelerator.
     - It is the responsibility of the Data Scientist and Engineer to ensure reconciliation and correctness of the data against source systems.

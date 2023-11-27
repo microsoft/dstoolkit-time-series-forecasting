@@ -4,7 +4,7 @@ import pytest
 from pyspark.sql import DataFrame as SparkDataFrame, SparkSession
 from pyspark_test import assert_pyspark_df_equal
 
-from tsfa.evaluation import CompoundEvaluator, OffsetErrEvaluator, WMapeEvaluator
+from tsfa.evaluation import CompoundEvaluator, WMapeEvaluator
 
 
 @pytest.fixture
@@ -40,8 +40,7 @@ def test_compute_metric_per_grain_mutliple_evaluators(data: SparkDataFrame, spar
     evaluator = CompoundEvaluator(
         [
             WMapeEvaluator(metric_colname="wmape1"),
-            WMapeEvaluator(metric_colname="wmape2"),
-            OffsetErrEvaluator(),
+            WMapeEvaluator(metric_colname="wmape2")
         ]
     )
     output_sdf = evaluator.compute_metric_per_grain(

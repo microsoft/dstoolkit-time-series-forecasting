@@ -1,7 +1,7 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC # Using your own dataframe for TSFA
-# MAGIC 
+# MAGIC
 # MAGIC This notebook demonstrates how you can load a dataframe that you prepared external to TSFA, make transformations to it, and then leverage TSFA with the in-memory dataframe (without needing to save to a delta table). This notebook uses a simplified config for demonstration purposes.
 # MAGIC
 # MAGIC To load the data successfully, please ensure the **`data/dominicks_oj_data/create_oj_data_small.py` notebook is executed successfully**. The notebook will create the database and table required for this notebook.
@@ -48,8 +48,8 @@ display(df)
 
 # MAGIC %md
 # MAGIC ### Step 2: Make data transformations, do data cleaning, create new features and prepare it for running an experiment
-# MAGIC 
-# MAGIC Example: Create a "post_coldwar" feature as a binary time indicator (This new column represents an **additional feature** created external to `tsff`)
+# MAGIC
+# MAGIC Example: Create a "post_coldwar" feature as a binary time indicator (This new column represents an **additional feature** created external to `tsfa`)
 
 # COMMAND ----------
 
@@ -68,7 +68,7 @@ display(new_df)
 new_additional_features_dict = {
     "additional_feature_colnames": ['on_promotion', 'post_coldwar']
 }
-_ = cnf_manager.modify(path_to_section=['feature_engineering'], 
+_ = cnf_manager.modify(path_to_section=['feature_engineering'],
                        new_section_values=new_additional_features_dict,
                        in_place=True)
 
@@ -76,7 +76,7 @@ _ = cnf_manager.modify(path_to_section=['feature_engineering'],
 new_required_columns_dict = {
     "required_columns": config['dataset_schema']["required_columns"] + ["post_coldwar"]
 }
-_ = cnf_manager.modify(path_to_section=['dataset_schema'], 
+_ = cnf_manager.modify(path_to_section=['dataset_schema'],
                        new_section_values=new_required_columns_dict,
                        in_place=True)
 
@@ -86,8 +86,8 @@ pprint(config)
 
 # COMMAND ----------
 
-# MAGIC %md 
-# MAGIC 
+# MAGIC %md
+# MAGIC
 # MAGIC ### Step 3: Create train / test data
 
 # COMMAND ----------
