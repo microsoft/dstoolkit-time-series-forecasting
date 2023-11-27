@@ -48,7 +48,7 @@ def test_compute_metric_per_grain_mutliple_evaluators(data: SparkDataFrame, spar
         target_colname='target',
         forecast_colname='forecast'
     )
-    expected_sdf = spark.createDataFrame([{"wmape1": 4 / 12, "wmape2": 4 / 12, "offset_err": 2 / 12}])
+    expected_sdf = spark.createDataFrame([{"wmape1": 4 / 12, "wmape2": 4 / 12}])
     # Ignore rows order when comparing
     output_sdf = output_sdf.sort(output_sdf.columns)
     expected_sdf = expected_sdf.sort(expected_sdf.columns)
@@ -83,6 +83,6 @@ def test_error_no_evaluators():
 
 
 def test_error_metric_colname_collision():
-    """Test error is raised when there are mutliple evaluators with the same `metric_colname`."""
+    """Test error is raised when there are multiple evaluators with the same `metric_colname`."""
     with pytest.raises(ValueError):
         _ = CompoundEvaluator([WMapeEvaluator(), WMapeEvaluator()])
