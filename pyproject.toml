@@ -23,6 +23,7 @@ xgboost = "^1.7.6"
 lightgbm = "^3.3.5"
 pip = "^23.1.2"
 matplotlib = {version = "^3.7.1", extras = ["EXTRAS"]}
+pyarrow = "^14.0.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.2"

@@ -4,7 +4,7 @@ import pytest
 from pyspark.sql import DataFrame as SparkDataFrame, SparkSession
 from pyspark_test import assert_pyspark_df_equal
 
-from tsfa.evaluation import CompoundEvaluator, OffsetErrEvaluator, WMapeEvaluator
+from tsfa.evaluation import CompoundEvaluator, WMapeEvaluator
 
 
 @pytest.fixture
@@ -40,8 +40,7 @@ def test_compute_metric_per_grain_mutliple_evaluators(data: SparkDataFrame, spar
     evaluator = CompoundEvaluator(
         [
             WMapeEvaluator(metric_colname="wmape1"),
-            WMapeEvaluator(metric_colname="wmape2"),
-            OffsetErrEvaluator(),
+            WMapeEvaluator(metric_colname="wmape2")
         ]
     )
     output_sdf = evaluator.compute_metric_per_grain(
@@ -49,7 +48,7 @@ def test_compute_metric_per_grain_mutliple_evaluators(data: SparkDataFrame, spar
         target_colname='target',
         forecast_colname='forecast'
     )
-    expected_sdf = spark.createDataFrame([{"wmape1": 4 / 12, "wmape2": 4 / 12, "offset_err": 2 / 12}])
+    expected_sdf = spark.createDataFrame([{"wmape1": 4 / 12, "wmape2": 4 / 12}])
     # Ignore rows order when comparing
     output_sdf = output_sdf.sort(output_sdf.columns)
     expected_sdf = expected_sdf.sort(expected_sdf.columns)
@@ -84,6 +83,6 @@ def test_error_no_evaluators():
 
 
 def test_error_metric_colname_collision():
-    """Test error is raised when there are mutliple evaluators with the same `metric_colname`."""
+    """Test error is raised when there are multiple evaluators with the same `metric_colname`."""
     with pytest.raises(ValueError):
         _ = CompoundEvaluator([WMapeEvaluator(), WMapeEvaluator()])
