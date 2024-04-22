@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC # Using the MLExperiment class with Error Analysis
 # MAGIC In this notebook, we demonstrate how to leverage the MLExperiment class and present the capapilites of the Error Analysis class:
-# MAGIC - Plot a distrubtion of the error for key columns
+# MAGIC - Plot a distribution of the error for key columns
 # MAGIC - Plot the error as a function of the time
 # MAGIC - Plot the error as a cohort of the time and the walk number
 # MAGIC - On the experiment side, we show how to:
@@ -147,12 +147,12 @@ myErrorAnalysis.cohort_plot(all_results=all_results, walk_name = 'walk', vmin = 
 # COMMAND ----------
 # MAGIC %md
 
-# MAGIC ### Using the plot hist function to show diffrent distrubtions.
-# MAGIC The plot hist function plots the error distrubtion of the key columns
-# MAGIC Why do we need to plot for diffrent keys combinations?
+# MAGIC ### Using the plot hist function to show different distributions.
+# MAGIC The plot hist function plots the error distribution of the key columns
+# MAGIC Why do we need to plot for different keys combinations?
 # MAGIC When we look only on the store level or the brand level we understand better how to model preforme.
 # MAGIC But we miss some cruicel information, for example, if we have a store that is doing well in the model and we have a brand that is doing well in the model, but when we combine them together we get a bad model.
-# MAGIC Some stores and brands would need diffrent approches, and with the plot hist function we can see it.
+# MAGIC Some stores and brands would need different approches, and with the plot hist function we can see it.
 
 # COMMAND ----------
 
