@@ -70,6 +70,7 @@ The table below provides details of the folders and their content.
 | tests | Contains unit tests for core accelerator functionality
 | tsfa/common | Contains Classes that have common helper methods used for data preparation and model training. E.g. `ConfigParser` class that used to parse, get, and set configuration parameters.|
 | tsfa/data_prep | Contains Class and functions for data preparation and data validation, respectively.|
+| tsfa/error_analysis| Contains Class for error analysis for time-series forecasting.|
 | tsfa/evaluation | Evaluator class with functionality to compute model performance metrics such as WMAPE are saved in this folder.|
 | tsfa/feature_engineering | This folder contains the feature engineering utility Classes. The `FeaturesUtils` Class is a "wrapper" class that orchestrates features computations based on specified configuration parameters. |
 | tsfa/models | This folder contains the model utility Classes. The `MultivariateModelWrapper` and `UnivariateModelWrapper` Classes are "wrapper" classes to be used to add new models to the accelerator. |
