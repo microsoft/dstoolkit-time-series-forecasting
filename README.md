@@ -76,10 +76,6 @@ The table below provides details of the folders and their content.
 | tsfa/models | This folder contains the model utility Classes. The `MultivariateModelWrapper` and `UnivariateModelWrapper` Classes are "wrapper" classes to be used to add new models to the accelerator. |
 | tsfa/ml_experiment.py | This is the ML Experiment orchestrator that utilizes the feature engineering utility, models, and evaluation Classes to train a specified model.
 
-## Troubleshooting
-
-Refer to [Troubleshooting](docs/troubleshooting.md) document for further details.
-
 ## Key Technologies
 
 - [Azure DataBricks](https://azure.microsoft.com/en-us/services/databricks/)
