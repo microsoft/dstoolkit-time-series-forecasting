@@ -7,8 +7,6 @@ There are 2 "testing" topics that this document will cover:
 1. Testing that your new changes/additions runs as intended via the `module_samples` notebooks. These notebooks are also used to provide examples of how to leverage individual modules or functionality
 2. Adding unit tests for your changes, which will automatically run as part of the CI/CD pipeline.
 
-In addition, please refer to the [Frequency of Regression Testing](decisions/0007_frequency_of_regression_testing.md) ADR document for information related to the method and cadence of end-to-end testing for the TSFA library.
-
 ## 1. Testing your changes via the module_sample notebooks
 
 Under `tsfa/notebooks` you will find a `module_samples` directory:
@@ -45,7 +43,7 @@ Unit tests for the TSFA library are under the `tsfa/tests` directory:
 
 The TSFA library uses [pytest](https://docs.pytest.org/en/7.1.x/) to do unit testing. Here are some additional resources to guide developers and contributors with developing good unit tests:
 
-- [CSE Playbook: Testing Data Science and MLOps Code](https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/)
+- [Code with engineering playbook: Testing Data Science and MLOps Code](https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/)
 - [Testing Best Practices for Machine Learning Libraries](https://towardsdatascience.com/testing-best-practices-for-machine-learning-libraries-41b7d0362c95)
 - [Unit Testing Best Practices](https://brightsec.com/blog/unit-testing-best-practices/)
 
