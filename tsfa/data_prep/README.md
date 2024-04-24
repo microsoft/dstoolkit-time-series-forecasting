@@ -1,16 +1,16 @@
 # Data Preparation
 
-This module assists with data preparation steps that precede model training and evaluation. Specifically, this module provides following functionality:
+This module assists with data preparation steps that precede model training and evaluation. Specifically, this module provides the following functionalities:
 
 - Loading of raw tables into Pandas or PySpark DataFrames
-- Definition and management of train-validation-test time splits
-- Checking data format, content and leakage
+- Defining and managing of the train-validation-test time splits
+- Checking for data formatting, content, and data leakage
 
 ## data_prep_utils.py
 
-Class to perform all data preparation actions, mainly focused on loading the data and creating the train, validation, holdout (test) splits. The data source, columns and the splits required are parametrized in the configuration file, therefore this class heavily depends on the configuration dictionary. Refer to [notebooks/samples](../notebooks/samples) folder notebooks for expected dictionary schema.
+Class to perform all data preparation actions, mainly focused on loading the data and creating the train, validation, holdout (test) splits. The data source, columns, and the splits required are parametrized in the configuration file, therefore this class heavily depends on the configuration dictionary. Refer to [notebooks/samples](../notebooks/samples) folder notebooks for expected dictionary schema.
 
-Functionality is:
+Functionality:
 
 - Generate a prefix to be used when storing experimentation related files
 - Load a table slice into a dataframe

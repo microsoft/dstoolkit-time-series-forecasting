@@ -1,6 +1,6 @@
 # Evaluation
 
-This module includes implementations of common metrics relevant to time series forecasting. It also contains a function to save the forecast values to a specified database and table. The evaluators are setup in a hierarchical fashion as shown in the image below
+This module includes implementations of common metrics relevant to time series forecasting. It also contains a function to save the forecast values to a specified database and table. The evaluators are setup in a hierarchical fashion as shown in the image below:
 
 ![evaluators](../../docs/images/evaluators.png)
 

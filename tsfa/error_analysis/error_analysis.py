@@ -37,9 +37,9 @@ class ErrorAnalysis:
         vmax: int = 150,
     ) -> None:
         """
-        This function is plotting the metric score for cohort analysis
-        The cohort plot is a plot of the error as a function of the time and the walk number
-        the vmin and vmax are for the colorbar
+        This function is for plotting the metric score for cohort analysis.
+        The cohort plot is a plot of the error as a function of time and walk number.
+        The vmin and vmax parameters are for defining the colorbars.
 
         Args:
             all_results (SparkDataFrame): Spark dataframe with the results of the walk forward
@@ -82,10 +82,10 @@ class ErrorAnalysis:
 
     def plot_time(self, df: SparkDataFrame) -> None:
         """
-        This function is plotting the metric score for each iteration per date
+        This function is for plotting the metric score for each iteration per date.
 
         Args:
-            df (SparkDataFrame): Spark dataframe with the results of the walk forward
+            df (SparkDataFrame): Spark dataframe with the results of the walk forward.
         """
         # get the data
         wmape = self.evaluator
@@ -111,13 +111,13 @@ class ErrorAnalysis:
         cut=False,
     ) -> None:
         """
-        This function is plotting the distribution of the wmape per keys over time
+        This function is for plotting the distribution of the wmape per keys over time.
 
         Args:
-            df (SparkDataFrame): Spark dataframe with the results of the walk forward
-            keys (list): list of the keys to group by
-            bins (int, optional): number of bins in the histograma. Defaults to 20.
-            precentile (float, optional): cut the edge of the data 0.95 => 95%. Defaults to 0.95.
+            df (SparkDataFrame): Spark dataframe with the results of the walk forward.
+            keys (list): List of the keys to group by.
+            bins (int, optional): Number of bins in the histograma. Defaults to 20.
+            precentile (float, optional): Cut the edge of the data 0.95 => 95%. Defaults to 0.95.
             cut (bool, optional): Using pd.cut() to get a better understanding of the data. Defaults to False.
         """
 
@@ -145,10 +145,10 @@ class ErrorAnalysis:
         num_of_pairs=10
     ) -> None:
         """
-        This function is plotting the best or worst examples
+        This function is for plotting the best or worst examples.
 
         Args:
-            df (SparkDataFrame): Spark dataframe with the results of the walk forward
+            df (SparkDataFrame): Spark dataframe with the results of the walk forward.
             top (bool): True for the best examples and False for the worst. Defaults to True.
             num_of_pairs (int): number of examples to show. Defaults to 10.
         """
