@@ -15,7 +15,7 @@
 
 ### The accelerator comprises of
 
-- JSON configuration file: Used to provide parameters for dataset, feature engineering, model training and evaluation. Sample configuration files are provided in the `notebooks/samples` folder.
+- JSON configuration file: Used to provide parameters for dataset, feature engineering, model training and evaluation. Sample configuration files are provided in the `notebooks/configs/json` folder.
 - TSFA source code
 - Sample notebooks that illustrate:
         - How to use specific components of TSFA, with minimal config dictionaries providing required parameters. These samples can be found in the [notebooks/module_samples](notebooks/module_samples) folder.
