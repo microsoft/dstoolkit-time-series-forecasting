@@ -9,7 +9,7 @@ There are 2 "testing" topics that this document will cover:
 
 ## 1. Testing your changes via the module_sample notebooks
 
-Under `tsfa/notebooks` you will find a `module_samples` directory:
+Under `notebooks` you will find a `module_samples` directory:
 
 ![module_samples_location](images/module_samples_location.png)
 
@@ -37,7 +37,7 @@ Each unit test is a self-contained procedure used to validate that the function,
 - Each test should be fully isolated (runs independently of other tests).
 - Failure messages should be clear; it should be easy to determine the expected result and to pinpoint the problem.
 
-Unit tests for the TSFA library are under the `tsfa/tests` directory:
+Unit tests for the TSFA library are under the `tests` directory:
 
 ![unit_tests_location](images/unit_tests_location.png)
 
