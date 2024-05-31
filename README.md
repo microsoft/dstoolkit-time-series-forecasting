@@ -15,7 +15,7 @@
 
 ### The accelerator comprises of
 
-- JSON configuration file: Used to provide parameters for dataset, feature engineering, model training and evaluation. Sample configuration files are provided in the `notebooks/samples` folder.
+- JSON configuration file: Used to provide parameters for dataset, feature engineering, model training and evaluation. Sample configuration files are provided in the `notebooks/configs/json` folder.
 - TSFA source code
 - Sample notebooks that illustrate:
         - How to use specific components of TSFA, with minimal config dictionaries providing required parameters. These samples can be found in the [notebooks/module_samples](notebooks/module_samples) folder.
@@ -75,10 +75,6 @@ The table below provides details of the folders and their content.
 | tsfa/feature_engineering | This folder contains the feature engineering utility Classes. The `FeaturesUtils` Class is a "wrapper" class that orchestrates features computations based on specified configuration parameters. |
 | tsfa/models | This folder contains the model utility Classes. The `MultivariateModelWrapper` and `UnivariateModelWrapper` Classes are "wrapper" classes to be used to add new models to the accelerator. |
 | tsfa/ml_experiment.py | This is the ML Experiment orchestrator that utilizes the feature engineering utility, models, and evaluation Classes to train a specified model.
-
-## Troubleshooting
-
-Refer to [Troubleshooting](docs/troubleshooting.md) document for further details.
 
 ## Key Technologies
 

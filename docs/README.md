@@ -1,11 +1,11 @@
 # Documentation
 
-This folder contains supporting documentation regarding the development of the Time Series Forecasting Accelerator (TSFA), including decision records, research discussions and references, and guides to help users use and contribute to the codebase.
+This folder contains supporting documentation regarding the development of the Time Series Forecasting Accelerator (TSFA), including research and references, and guides to help users use as well as contribute to the codebase.
 
 Subdirectories:
 
 - **images**: Images/screenshots used by documentation files in this directory.
-- **research_and_references**: Contains files that document and summarize the results of various research and recommendations conducted through the development of the Time Series Forecasting Accelerator, as well as links to various reference materials for time series forecasting.
+- **research_and_references**: Contains files that document and summarize the results of various research and recommendations conducted through the development of the TFSA, as well as links to various reference materials for time series forecasting.
 
 Reference Documents:
 
